@@ -15,14 +15,15 @@ class TaoBangHoadon extends Migration
     {
         Schema::create('HoaDon', function (Blueprint $table) {
             $table->increments('MaHD');
-            $table->integer('MaSP');
-            $table->integer('MaNV');
+            $table->integer('MaKH')->unsigned();
+            $table->integer('MaNV')->unsigned();
             $table->date('NgayDat');
             $table->date('NgayGiao');
             $table->text('TinhTrang');
             $table->decimal('TongTien', $precision = 10, $scale = 0);
             $table->integer('MaNVC');
             $table->timestamps();
+            
         });
     }
 

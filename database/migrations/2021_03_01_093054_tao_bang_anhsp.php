@@ -14,8 +14,8 @@ class TaoBangAnhsp extends Migration
     public function up()
     {
         Schema::create('AnhSP', function (Blueprint $table) {
-            $table->increments('MaNCC');
-            $table->integer('MaSP');
+            $table->increments('MaAnh');
+            $table->integer('MaSP')->unsigned();
             $table->timestamps();
         });
     }

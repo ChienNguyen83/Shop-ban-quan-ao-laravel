@@ -14,14 +14,14 @@ class TaoBangChiTietHoaDon extends Migration
     public function up()
     {
         Schema::create('ChiTietHoaDon', function (Blueprint $table) {
-            $table->integer('MaHD');
-            $table->integer('MaSP');
+            $table->integer('MaHD')->unsigned();
+            $table->integer('MaSP')->unsigned();
             $table->integer('SoLuong');
             $table->decimal('DonGia', $precision = 10, $scale = 0);
             $table->decimal('ThanhTien', $precision = 10, $scale = 0);
-            $table->integer('Size');
-            $table->integer('MaMau');
-            $table->primary(['MaHD', 'MaSP', 'Size', 'MaMau']);
+            $table->integer('MaSize');
+            $table->string('MaMau',50);
+            $table->primary(['MaHD', 'MaSP', 'MaSize', 'MaMau']);
             $table->timestamps();
         });
     }

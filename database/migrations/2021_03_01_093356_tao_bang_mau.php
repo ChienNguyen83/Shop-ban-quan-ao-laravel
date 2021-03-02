@@ -14,7 +14,7 @@ class TaoBangMau extends Migration
     public function up()
     {
         Schema::create('Mau', function (Blueprint $table) {
-            $table->integer('MaMau');
+            $table->string('MaMau',50);
             $table->primary('MaMau');
             $table->timestamps();
         });

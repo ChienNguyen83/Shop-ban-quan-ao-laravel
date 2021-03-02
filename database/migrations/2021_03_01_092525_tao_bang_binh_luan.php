@@ -15,8 +15,8 @@ class TaoBangBinhLuan extends Migration
     {
         Schema::create('BinhLuan', function (Blueprint $table) {
             $table->increments('MaBL');
-            $table->integer('MaSP');
-            $table->integer('MaKH');
+            $table->integer('MaSP')->unsigned();
+            $table->integer('MaKH')->unsigned();
             $table->text('NoiDung');
             $table->dateTime('ThoiGian', $precision = 0);
             $table->timestamps();

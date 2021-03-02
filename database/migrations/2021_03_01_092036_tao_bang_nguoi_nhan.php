@@ -14,7 +14,7 @@ class TaoBangNguoiNhan extends Migration
     public function up()
     {
         Schema::create('NguoiNhan', function (Blueprint $table) {
-            $table->increments('MaHD');
+            $table->integer('MaHD')->unsigned();
             $table->string('TenNN',50);
             $table->text('DiaChiNN');
             $table->bigInteger('SDTNN');

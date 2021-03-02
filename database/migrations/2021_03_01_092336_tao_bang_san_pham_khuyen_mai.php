@@ -13,9 +13,9 @@ class TaoBangSanPhamKhuyenMai extends Migration
      */
     public function up()
     {
-        Schema::create('SanPhamKuyenmai', function (Blueprint $table) {
-            $table->integer('MaSP');
-            $table->integer('MaKM');
+        Schema::create('SanPhamKhuyenmai', function (Blueprint $table) {
+            $table->integer('MaSP')->unsigned();
+            $table->integer('MaKM')->unsigned();
             $table->primary(['MaSP', 'MaKM']);
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class TaoBangSanPhamKhuyenMai extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('SanPhamKuyenmai');
+        Schema::dropIfExists('SanPhamKhuyenmai');
     }
 }

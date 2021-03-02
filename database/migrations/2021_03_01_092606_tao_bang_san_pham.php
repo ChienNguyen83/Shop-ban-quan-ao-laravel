@@ -16,7 +16,8 @@ class TaoBangSanPham extends Migration
         Schema::create('SanPham', function (Blueprint $table) {
             $table->increments('MaSP');
             $table->string('TenSP',50);
-            $table->integer('MaDM');
+            $table->integer('MaDM')->unsigned();
+            $table->integer('MaNCC')->unsigned();
             $table->integer('SoLuong');
             $table->text('MoTa');
             $table->decimal('amount', $precision = 10, $scale = 0);

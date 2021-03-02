@@ -15,8 +15,8 @@ class TaoBangPhieuNhap extends Migration
     {
         Schema::create('phieuNhap', function (Blueprint $table) {
             $table->increments('MaPN');
-            $table->integer('MaNV');
-            $table->integer('MaSP');
+            $table->integer('MaNV')->unsigned();
+            $table->integer('MaSP')->unsigned();
             $table->integer('SoLuong');
             $table->decimal('DonGiaNhap', $precision = 10, $scale = 0);
             $table->decimal('TongTienNhap', $precision = 10, $scale = 0);
