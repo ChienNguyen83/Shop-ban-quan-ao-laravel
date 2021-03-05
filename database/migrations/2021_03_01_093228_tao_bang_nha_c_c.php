@@ -16,8 +16,6 @@ class TaoBangNhaCC extends Migration
         Schema::create('NhaCC', function (Blueprint $table) {
             $table->increments('MaNCC');
             $table->string('TenNCC',50);
-            $table->date('NgayBDCC');
-            $table->date('NgayKTCC');
         });
     }
 
