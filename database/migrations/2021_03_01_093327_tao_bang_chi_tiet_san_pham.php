@@ -19,6 +19,7 @@ class TaoBangChiTietSanPham extends Migration
             $table->string('MaMau',50);
             $table->primary(['MaSP', 'MaSize', 'MaMau']);
             $table->integer('SoLuong');
+            $table->decimal('DonGia', $precision = 10, $scale = 0);
             $table->timestamps();
         });
     }

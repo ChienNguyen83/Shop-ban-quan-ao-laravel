@@ -18,11 +18,13 @@ class TaoBangSanPham extends Migration
             $table->string('TenSP',50);
             $table->integer('MaDM')->unsigned();
             $table->integer('MaNCC')->unsigned();
-            $table->integer('SoLuong');
             $table->text('MoTa');
-            $table->decimal('amount', $precision = 10, $scale = 0);
-            $table->string('MaAnh',50);
-            $table->string('AnhNen',50);
+            
+            // $table->string('MaAnh',50);
+            $table->string('AnhNen',250);
+            $table->string('Anh1',250);
+            $table->string('Anh2',250);
+            $table->string('Anh3',250);
             $table->timestamps();
         });
     }

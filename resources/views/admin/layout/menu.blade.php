@@ -147,9 +147,9 @@
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"></h6>
-            <a class="collapse-item" href="?action=sanpham">Danh Sách</a>
-            <a class="collapse-item" href="?action=sanpham&view=themsp">Thêm</a>
-            <a class="collapse-item" href="?action=mau&view=them">Thêm màu</a> 
+            <a class="collapse-item" href="admin/sanpham/danhsach">Danh Sách</a>
+            <a class="collapse-item" href="admin/sanpham/them">Thêm</a>
+            <a class="collapse-item" href="admin/sanpham/themmau">Thêm màu</a> 
           </div>
         </div>
       </li>

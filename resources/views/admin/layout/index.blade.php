@@ -18,6 +18,7 @@
    <link href="admin_backend/template/mdi/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="admin_backend/template/cssfont.css" rel="stylesheet">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="admin_backend/template/css/sb-admin-2.min.css" rel="stylesheet">
   <link href="admin_backend/template/bootstrap/mdb.lite.min.css" rel="stylesheet">
   <link rel="stylesheet" href="admin_backend/template/style.css">
@@ -73,6 +74,7 @@
   <!-- Page level custom scripts -->
   <script src="admin_backend/template/js/demo/chart-area-demo.js"></script>
   <script src="admin_backend/template/js/demo/chart-pie-demo.js"></script>
+  <script src="admin_backend/template/ckeditor/ckeditor.js"></script>
 
 
 

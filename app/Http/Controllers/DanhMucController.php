@@ -59,7 +59,7 @@ class DanhMucController extends Controller
              echo '<pre>';
             print_r($danhmuc->TenDM); 
 
-    	// return redirect('admin/danhmuc/danhsach');
+    	return redirect('admin/danhmuc/danhsach');
     	
     }
     public function getXoa($MaDM){

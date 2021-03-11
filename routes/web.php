@@ -33,6 +33,23 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::get('them','SanPhamController@getThem');
 		Route::post('them','SanPhamController@postThem');
 		
+        Route::get('themmau','MauController@getDanhSach');
+		Route::post('themmau','MauController@postThem');
+		Route::get('xoamau/{MaMau}','MauController@getXoa');
+		
+
+		
+		Route::post('themchitietsp','ThemChiTietSPController@themChiTietSP');
+		
+	});
+		Route::group(['prefix'=>'chitietsanpham'], function(){
+		Route::get('danhsach','SanPhamController@getDanhSach');
+		Route::get('sua/{MaDM}','SanPhamController@getSua');
+		Route::post('sua/{MaDM}','SanPhamController@postSua');
+		Route::get('them','SanPhamController@getThem');
+		Route::post('them','SanPhamController@themChiTiet');
+
+		
 	});
 	Route::group(['prefix'=>'thuonghieu'], function(){
 		Route::get('danhsach','ThuongHieuController@getDanhSach');
@@ -40,6 +57,7 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('sua/{MaDM}','ThuongHieuController@postSua');
 		Route::get('them','ThuongHieuController@getThem');
 		Route::post('them','ThuongHieuController@postThem');
+
 		
 	});
 	// Route::group(['prefix'=>'nhanvien'], function(){

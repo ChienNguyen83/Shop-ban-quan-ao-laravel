@@ -24,7 +24,7 @@
 			@foreach($thuonghieu as $thuonghieu)
 		    <tr>
 				<td>{{$i++}}</td><td>{{$thuonghieu->TenNCC}}</td>
-				<td><a href="admin/thuonghieu/sua/{{$DanhMuc->MaNCC}}"><i class="far fa-edit"></i></a></td>
+				<td><a href="admin/thuonghieu/sua/{{$thuonghieu->MaNCC}}"><i class="far fa-edit"></i></a></td>
 				<td><a><i class="fas fa-backspace"></i></a></td>
 			</tr>
 	        @endforeach

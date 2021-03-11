@@ -11,7 +11,7 @@ class ThuongHieu extends Model
     protected $table='NhaCC';
     protected $fillable = [
         'TenNCC',
-        'NgayBDCC',
+     
        
     ];
     public $timestamps = false;
