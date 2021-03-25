@@ -19,7 +19,7 @@ class TaoBangChiTietHoaDon extends Migration
             $table->integer('SoLuong');
             $table->decimal('DonGia', $precision = 10, $scale = 0);
             $table->decimal('ThanhTien', $precision = 10, $scale = 0);
-            $table->integer('MaSize');
+            $table->string('MaSize',50);
             $table->string('MaMau',50);
             $table->primary(['MaHD', 'MaSP', 'MaSize', 'MaMau']);
             $table->timestamps();

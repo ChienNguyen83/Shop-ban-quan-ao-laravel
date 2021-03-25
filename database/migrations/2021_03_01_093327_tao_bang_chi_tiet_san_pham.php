@@ -15,7 +15,7 @@ class TaoBangChiTietSanPham extends Migration
     {
         Schema::create('ChiTietSanPham', function (Blueprint $table) {
             $table->integer('MaSP')->unsigned();
-            $table->integer('MaSize');
+            $table->string('MaSize',50);
             $table->string('MaMau',50);
             $table->primary(['MaSP', 'MaSize', 'MaMau']);
             $table->integer('SoLuong');

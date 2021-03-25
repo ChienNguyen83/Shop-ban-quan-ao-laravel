@@ -18,8 +18,46 @@ class ChiTietSanPham extends Model
         'SoLuong',
         'DonGia',
 
-       
-    ];
+       ];
+
+    protected function getCTSPbyMa($MaSP){
+        $ctsp = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->get();
+        return $ctsp;
+    }
+
+        protected function getCTSPbyMaSP($MaSP){
+        $ctsp = DB::table('SanPham')->where('MaSP',$MaSP)->get();
+        return $ctsp;
+    }
+        protected function Xoa($MaSP){
+        $ctsp = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->delete();
+        return $ctsp;
+    }
+    protected function suactsp($MaSP,$MaSize,$MaMau,$SoLuong,$DonGia) {
+                    $updated = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->where('MaSize',$MaSize)->where('MaMau',$MaMau)
+            ->update([
+                'MaSP'       => $MaSP,
+                'MaSize'       => $MaSize,
+                'MaMau'       => $MaMau,
+                'SoLuong'       => $SoLuong,
+                'DonGia'       => $DonGia
+               
+              ]);  
+
+            return $updated;
+    }
+
+    protected function getCTSP($MaSP,$MaSize,$MaMau){
+        $ctsp = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->where('MaSize',$MaSize)->where('MaMau',$MaMau)->get();
+        return $ctsp;
+    }
+        protected function getSizebyMau($MaSP,$MaMau) {
+        $ctspbyMau = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->where('MaMau',$MaMau)->get();
+        return $ctspbyMau;
+    }
+
+
+
 
     // protected function getSize(){
     // 	$size = DB::table('Size')->get();

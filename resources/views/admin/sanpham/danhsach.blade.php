@@ -15,10 +15,20 @@
 	<table class="table table-hover m-auto text-center" style="font-size: 13px;">
 		<thead class="badge-info">
 			<tr>
-				<th>STT</th><th>Ảnh Nền</th> <th>Tên Sản Phẩm</th><th>Danh Mục</th><th>Thương hiệu</th><th>Số lượng</th><th>Mô tả</th><th>Đơn Giá</th><th colspan ="2" class="badge-danger"></th>
+				<th rowspan="2">STT</th><th rowspan="2">Ảnh Nền</th> <th rowspan="2">Tên Sản Phẩm</th><th rowspan="2">Danh Mục</th><th rowspan="2">Thương hiệu</th><th></th><th colspan ="2" rowspan="2" class="badge-danger"></th>
+			</tr>
+			<tr>
+				<th><u class="navbar">
+					<li>Màu</li>
+					<li>Size</li>
+					<li>Số Lượng</li>
+					<li>Giá</li>
+				</ul></th>
+				
 			</tr>
 		</thead>
 		<tbody>
+
 	       <?php $i=1 ?>
 	       @foreach ($SanPham as $SanPham)
 
@@ -26,13 +36,37 @@
 				<td>{{$i++}}</td>
 				<td><img  src="{{$SanPham->AnhNen}}" width="60" height="50"></td>
 				<td>{{$SanPham->TenSP}}</td>
-				<td>{{$SanPham->TenDM()}}<</td>
-				<td></td>
-				<td>{{$SanPham->MoTa}}</td>
+				<td>{{$SanPham->DanhMuc->TenDM}}</td>
+				<td>{{$SanPham->ThuongHieu->TenNCC}}</td>
 				<!-- <td><a href="#"></a></td> -->
-				<td>200</td>
-				<td><a href="" ><i class="far fa-edit"></i></a></td>
-				<td><a href="" ><i class="fas fa-backspace"></i></a></td>
+				
+				<td>
+					
+					   <table class="table table-hover m-auto text-center">
+					  <!--  	<tr>
+					   		<th>Màu</th>
+					   		<th>Size</th>
+					   		<th>Số lượng</th>
+					   		<th>Giá</th>
+					   	</tr> -->
+					   	@foreach ($SanPham->CTSP as $value)
+					   	<tr>
+					   		<td>{{$value->MaMau}}</td>
+					   		<td>{{$value->MaSize}}</td>
+					   		<td>{{$value->SoLuong}}</td>
+					   		<td>{{$value->DonGia}}</td>
+					   	</tr>
+					   	@endforeach
+					   </table>
+                       
+                       
+                       
+					
+				</td>
+				
+				
+				<td><a href="admin/sanpham/sua/{{$SanPham->MaSP}}" ><i class="far fa-edit"></i></a></td>
+				<td><a href="admin/sanpham/xoa/{{$SanPham->MaSP}}" ><i class="fas fa-backspace"></i></a></td>
 			</tr>
 	      @endforeach
 			

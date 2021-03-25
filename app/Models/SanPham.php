@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 class SanPham extends Model
 {
@@ -37,6 +38,10 @@ class SanPham extends Model
     	$Masp = DB::table('SanPham')->where('TenSP',$TenSP)->orderBy('Masp', 'desc')->limit(1)->get();
     	return $Masp;
     }
+    protected function getTenSP($MaSP){
+      $Masp = DB::table('SanPham')->where('MaSP',$MaSP)->orderBy('Masp', 'desc')->limit(1)->get();
+      return $Masp;
+    }
 
     protected function upAnh ($file=array()){
     	// echo '<pre>';
@@ -54,9 +59,42 @@ class SanPham extends Model
     	$success=$file->move('Anhsp',$randomName);
         return $success;
     }
-    public function TenDM($Masp){
-      $TenDM = DB::table('DanhMuc')->where('MaDM',$MaDM)->orderBy('TenDM', 'desc')->limit(1)->get();
-      return $TenDM;
+    public function DanhMuc(){
+      // $TenDM = DB::table('DanhMuc')->where('MaDM',$MaDM)->orderBy('TenDM', 'desc')->limit(1)->get();
+      return $this->belongsTo('App\Models\DanhMuc','MaDM','MaDM');
+    }
+        public function ThuongHieu(){
+      // $TenDM = DB::table('DanhMuc')->where('MaDM',$MaDM)->orderBy('TenDM', 'desc')->limit(1)->get();
+      return $this->belongsTo('App\Models\ThuongHieu','MaNCC','MaNCC');
+    }
+        public function CTSP(){
+      // $TenDM = DB::table('DanhMuc')->where('MaDM',$MaDM)->orderBy('TenDM', 'desc')->limit(1)->get();
+      return $this->hasMany('App\Models\ChiTietSanPham','MaSP','MaSP');
+    }
+        public function Size()
+    {
+        $a= $this->hasManyThrough(
+            'App\Models\Size', 'App\Models\ChiTietSanPham',
+            'MaSP', 'MaSize' ,'MaSize'
+        );
+        return $a->TenSize;
+    }
+        protected function suasp($MaSP,$TenSP,$MaDM,$MaNCC,$Mota,$AnhNen,$Anh1,$Anh2,$Anh3) {
+            $updated = DB::table('SanPham')
+            ->where('MaDM', '=', $MaDM)
+            ->update([
+                'TenSP'       => $TenSP,
+                'MaDM'       => $MaDM,
+                'MaNCC'       => $MaNCC,
+                'Mota'       => $Mota,
+                'AnhNen'       => $AnhNen,
+                'Anh1'       => $Anh1,
+                'Anh2'       => $Anh2,
+                'Anh3'       => $Anh3
+               
+              ]);  
+
+            return $updated;
     }
    //  public function themSP($TenSP,$MaDM,$MaNCC,$Mota,$AnhNen,$Anh1,$Anh2,$Anh3){
 

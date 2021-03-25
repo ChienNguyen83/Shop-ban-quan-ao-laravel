@@ -13,13 +13,12 @@
       <div class="btn-group col-12 row">
           <label class="mr-5">Size</label>
             @foreach ($MaSanPham  as $MaSanPham) 
-             <input type="text" name="MaSP" value="{{$MaSanPham->MaSP}}" placeholder="{{$MaSanPham->MaSP}}">
-
+             <input type="hidden" name="MaSP" value="{{$MaSanPham->MaSP}}" placeholder="{{$MaSanPham->MaSP}}">
             @endforeach
             @foreach ($Size  as $Size)
                <div class=" custom-checkbox custom-control col-1 ">
               <input type="checkbox" class="custom-control-input m-2" id="size{{$Size->MaSize}}" name="size[]" value="{{$Size->MaSize}}"  >
-              <label class="custom-control-label" for="size{{$Size->MaSize}}"><h5>{{$Size->TenSize}}</h5></label>
+              <label class="custom-control-label" for="size{{$Size->MaSize}}"><h5>{{$Size->MaSize}}</h5></label>
           </div>
             @endforeach
           
@@ -59,7 +58,7 @@
             @foreach ($Size1  as $Size1)
                <div class=" custom-checkbox custom-control col-1 ">
               <input type="checkbox" class="custom-control-input m-2" id="size1{{$Size1->MaSize}}" name="size1[]" value="{{$Size1->MaSize}}"  >
-              <label class="custom-control-label" for="size1{{$Size1->MaSize}}"><h5>{{$Size1->TenSize}}</h5></label>
+              <label class="custom-control-label" for="size1{{$Size1->MaSize}}"><h5>{{$Size1->MaSize}}</h5></label>
               </div>
             @endforeach
           
@@ -98,7 +97,7 @@
             @foreach ($Size2  as $Size2)
                <div class=" custom-checkbox custom-control col-1 ">
               <input type="checkbox" class="custom-control-input m-2" id="Size2{{$Size2->MaSize}}" name="size2[]" value="{{$Size2->MaSize}}"  >
-              <label class="custom-control-label" for="Size2{{$Size2->MaSize}}"><h5>{{$Size2->TenSize}}</h5></label>
+              <label class="custom-control-label" for="Size2{{$Size2->MaSize}}"><h5>{{$Size2->MaSize}}</h5></label>
               </div>
             @endforeach
           
@@ -137,7 +136,7 @@
             @foreach ($Size3  as $Size3)
                <div class=" custom-checkbox custom-control col-1 ">
               <input type="checkbox" class="custom-control-input m-2" id="Size3{{$Size3->MaSize}}" name="size3[]" value="{{$Size3->MaSize}}"  >
-              <label class="custom-control-label" for="Size3{{$Size3->MaSize}}"><h5>{{$Size3->TenSize}}</h5></label>
+              <label class="custom-control-label" for="Size3{{$Size3->MaSize}}"><h5>{{$Size3->MaSize}}</h5></label>
               </div>
             @endforeach
           
@@ -176,7 +175,7 @@
             @foreach ($Size4  as $Size4)
                <div class=" custom-checkbox custom-control col-1 ">
               <input type="checkbox" class="custom-control-input m-2" id="Size4{{$Size4->MaSize}}" name="size4[]" value="{{$Size4->MaSize}}"  >
-              <label class="custom-control-label" for="Size4{{$Size4->MaSize}}"><h5>{{$Size4->TenSize}}</h5></label>
+              <label class="custom-control-label" for="Size4{{$Size4->MaSize}}"><h5>{{$Size4->MaSize}}</h5></label>
               </div>
             @endforeach
           

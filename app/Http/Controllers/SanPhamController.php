@@ -9,6 +9,7 @@ use App\Models\Mau;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class SanPhamController extends Controller
 {
      public function getDanhSach() {
@@ -34,16 +35,91 @@ class SanPhamController extends Controller
     ]);
     	// return view('admin.sanpham.them');
     }
-    public function getSua($MaDM) {
+    public function getSua($MaSP) {
     	//$danhmuc = DB::select('select * from DanhMuc where MaDM ='.$MaDM);
    //  	  	echo '<pre>';
 			// print_r($danhmuc);  
-			
-    	return view('admin.danhmuc.sua',['danhmuc'=>$danhmuc]);
-    }
-    public function postSua($id) {
+			// $SP= SanPham::all();
+            $SanPham = SanPham::getTenSP($MaSP);
+            $SanPham1 = SanPham::getTenSP($MaSP);
+            $ctsp = ChiTietSanPham::getCTSPbyMa($MaSP);
+            $DanhMuc = DanhMuc::all();
+            $thuonghieu = ThuongHieu::all();
+            // $Size = Size::all();
+            $Mau = Mau::all();
+        //     echo '<pre>';
+        // var_dump($Mau);
+    	return view('admin.sanpham.sua',['SanPham'=>$SanPham,
+        'SanPham1'=>$SanPham1,  
+        'ctsp'=>$ctsp,
+        'DanhMuc'=>$DanhMuc,
+        'thuonghieu'=>$thuonghieu,
+        'Mau'=>$Mau,
+
+
         
-    	// return view('admin.danhmuc.sua');
+    ]);
+    }
+    public function postSua(Request $request,$MaSP) {
+        
+                if (
+            $request->file('anhnen') && $request->tensp && $request->mota && $request->file('anh1') && $request->file('anh3') && $request->file('anh2') 
+        ) {
+
+            $MaDM = (int)$request->madm;
+            $MaNCC = (int)$request->mancc;
+            $TenSP = $request->tensp;
+            $Mota = $request->mota;
+            $AnhNen = SanPham::upAnh($request->file('anhnen'));
+            $Anh1= SanPham::upAnh($request->file('anh1'));
+            $Anh2= SanPham::upAnh($request->file('anh2'));
+            $Anh3= SanPham::upAnh($request->file('anh3'));
+            $suasp = SanPham::suasp($MaSP,$TenSP,$MaDM,$MaNCC,$Mota,$AnhNen,$Anh1,$Anh2,$Anh3);
+            echo 'cap nhat thanh cong';
+        }
+        $ma = $request->masp;
+        // echo ($ma[0]);
+        // $xoa = ChiTietSanPham::Xoa($ma[0]);
+        foreach ($ma as $value) {
+
+            //     $Gia = $request->gia;
+            //     $Soluong = $request->soluong;
+            //     $Size = $request->size;
+            //     $Mau = $request->mau;
+            //     $MaSP = $request->MaSP;
+            // $ctsp = ChiTietSanPham::getCTSPbyMa($value);
+            // foreach ($ctsp as $sp) {
+            //      if ($sp->MaSize == $Size && $sp->MaMau == $Mau && $sp->SoLuong == $Soluong && $sp->DonGia == $Gia ) {
+            //              continue;
+            //          } else {
+            //                 // $xoa = ChiTietSanPham::Xoa($value);
+            //                 $capnhat = ChiTietSanPham::themctsp($value,$Size,$Mau,$Soluong,$Gia);
+            //                 echo 'Cap nhat thanh cong';
+            //          }
+            // }
+          
+            // var_dump($ctsp);
+
+        }
+        foreach ($ma as $value) {
+                $Gia = $request->gia;
+                $Soluong = $request->soluong;
+                $Size = $request->size;
+                $Mau = $request->mau;
+                $MaSP = $request->MaSP;
+            $ctsp = ChiTietSanPham::getCTSPbyMa($value);
+            foreach ($ctsp as $sp) {
+                 if ($sp->MaSize == $Size && $sp->MaMau == $Mau && $sp->SoLuong == $Soluong && $sp->DonGia == $Gia ) {
+                         continue;
+                     } else {
+                            // $xoa = ChiTietSanPham::Xoa($value);
+                            $capnhat = ChiTietSanPham::themctsp($value,$Size,$Mau,$Soluong,$Gia);
+                            echo 'Cap nhat thanh cong';
+                     }
+            }
+
+        }
+    	
     }
     public function postThem(Request $request) {
     	//Check xem tên nhập ở form có bị lỗi không
@@ -99,6 +175,7 @@ class SanPhamController extends Controller
             
             // $this->themChiTiet();
             $MaSanPham = SanPham::getMaSP($TenSP);
+
             $Size = SanPham::getSize();
             $Size1 = SanPham::getSize();
             $Size2 = SanPham::getSize();

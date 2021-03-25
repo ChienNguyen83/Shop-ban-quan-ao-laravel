@@ -76,7 +76,7 @@
   <script src="admin_backend/template/js/demo/chart-pie-demo.js"></script>
   <script src="admin_backend/template/ckeditor/ckeditor.js"></script>
 
-
+  @yield('script')
 
 
 

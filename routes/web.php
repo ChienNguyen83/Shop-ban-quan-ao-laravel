@@ -28,8 +28,8 @@ Route::group(['prefix'=>'admin'],function(){
 	});
 	Route::group(['prefix'=>'sanpham'], function(){
 		Route::get('danhsach','SanPhamController@getDanhSach');
-		Route::get('sua/{MaDM}','SanPhamController@getSua');
-		Route::post('sua/{MaDM}','SanPhamController@postSua');
+		Route::get('sua/{MaSP}','SanPhamController@getSua');
+		Route::post('sua/{MaSP}','SanPhamController@postSua');
 		Route::get('them','SanPhamController@getThem');
 		Route::post('them','SanPhamController@postThem');
 		
@@ -40,6 +40,13 @@ Route::group(['prefix'=>'admin'],function(){
 
 		
 		Route::post('themchitietsp','ThemChiTietSPController@themChiTietSP');
+		Route::get('themspdaco/{MaSP}','ThemChiTietSPController@getthemChiTietSP');
+
+		Route::get('sua/ctsp/{MaSP}/{MaSize}/{MaMau}','ThemChiTietSPController@getsuaChiTietSP');
+		Route::post('sua/ctsp/{MaSP}/{MaSize}/{MaMau}','ThemChiTietSPController@postsuaChiTietSP');
+
+		Route::get('ajax/{MaSP}/{MaMau}','ajaxController@getSize');
+		Route::post('ajax/{MaSP}/{MaMau}/{MaSize}','ajaxController@postSua');
 		
 	});
 		Route::group(['prefix'=>'chitietsanpham'], function(){

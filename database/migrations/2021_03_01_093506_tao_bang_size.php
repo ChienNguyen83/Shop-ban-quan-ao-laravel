@@ -14,9 +14,9 @@ class TaoBangSize extends Migration
     public function up()
     {
         Schema::create('Size', function (Blueprint $table) {
-            $table->integer('MaSize');
+            $table->string('MaSize',50);
             $table->primary('MaSize');
-            $table->string('TenSize',50);
+            
             $table->timestamps();
         });
     }
