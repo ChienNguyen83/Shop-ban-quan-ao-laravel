@@ -238,6 +238,15 @@ class SanPhamController extends Controller
     	
     }
 
+    public function postXoa(Request $request){
+        $MaSP = $request->MaSP;
+        $xoa = SanPham::XoaSP($MaSP);
+        $sp=$request->MaSP;
+        return response()->json([
+            'data'=>$sp,
+            'message'=>'Tạo sinh viên thành công'
+        ],200);
+    }
 
 
 

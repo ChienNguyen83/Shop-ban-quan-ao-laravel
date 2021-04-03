@@ -96,6 +96,33 @@ class SanPham extends Model
 
             return $updated;
     }
+
+    protected function getSPbyDM($MaDM){
+      $sp = DB::table('SanPham')->where('MaDM',$MaDM)->orderBy('TenSP', 'desc')->get();
+      return $sp;
+    }
+
+    protected function getGiaSPbyMa($MaSP) {
+      $sp = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->get();
+      $arr = array();
+      foreach ($sp as $value) {
+         array_push($arr,$value->DonGia);
+      }
+      if (min($arr)==max($arr)) {
+        return $gia = min($arr);
+      } else {
+         $gia = min($arr)."~".max($arr);
+         return $gia;
+      }
+     
+    }
+    protected function XoaSP($MaSP){
+      DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->delete();
+      $xoa = DB::table('SanPham')->where('MaSP',$MaSP)->delete();
+      return $xoa;
+    }
+
+
    //  public function themSP($TenSP,$MaDM,$MaNCC,$Mota,$AnhNen,$Anh1,$Anh2,$Anh3){
 
    //          DB::table('SanPham')->insert(

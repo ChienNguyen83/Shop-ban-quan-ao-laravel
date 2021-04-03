@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/thu', function () {
-    return view('admin.danhmuc.danhsach');
-});
+
 Route::group(['prefix'=>'admin'],function(){
 	Route::group(['prefix'=>'danhmuc'], function(){
 		Route::get('danhsach','DanhMucController@getDanhSach');
@@ -23,13 +21,14 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('sua/{MaDM}','DanhMucController@postSua');
 		Route::get('them','DanhMucController@getThem');
 		Route::post('them','DanhMucController@postThem');
-		Route::get('xoa/{MaDM}','DanhMucController@getXoa');
+		Route::post('xoa/{MaDM}','DanhMucController@postXoa')->name('XoaDM');
 		
 	});
 	Route::group(['prefix'=>'sanpham'], function(){
 		Route::get('danhsach','SanPhamController@getDanhSach');
 		Route::get('sua/{MaSP}','SanPhamController@getSua');
 		Route::post('sua/{MaSP}','SanPhamController@postSua');
+		Route::post('xoa/{MaSP}','SanPhamController@postXoa')->name('XoaSP');
 		Route::get('them','SanPhamController@getThem');
 		Route::post('them','SanPhamController@postThem');
 		
@@ -46,7 +45,10 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('sua/ctsp/{MaSP}/{MaSize}/{MaMau}','ThemChiTietSPController@postsuaChiTietSP');
 
 		Route::get('ajax/{MaSP}/{MaMau}','ajaxController@getSize');
-		Route::post('ajax/{MaSP}/{MaMau}/{MaSize}','ajaxController@postSua');
+		Route::get('ajax/danhmuc','ajaxController@getDanhMuc');
+		Route::get('ajax/thuonghieu','ajaxController@getThuongHieu');
+		Route::get('ajax/danhmuc/sanpham/{MaDM}','ajaxController@getSPbyDanhMuc');
+		Route::post('ajax','ajaxController@postSua')->name('jsonTest');
 		
 	});
 		Route::group(['prefix'=>'chitietsanpham'], function(){
@@ -78,3 +80,7 @@ Route::group(['prefix'=>'admin'],function(){
 	// 	Route::get('them','TheLoaiController@getThem');
 	// });
 });
+Route::resource('/trangchu','TrangChuController');
+Route::resource('/donam','DoNamController');
+Route::resource('/donu','DoNuController');
+Route::resource('/phongcach','PhongCachController');

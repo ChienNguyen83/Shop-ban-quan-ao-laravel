@@ -1,6 +1,19 @@
  @extends('admin.layout.index')
 
 @section('content')
+ <style>
+   .anh {
+     display: inline-block;
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     opacity: 0;
+   }
+   .borderip {
+    border: 1px solid;
+    padding:3px;
+   }
+ </style>
   <hr class="badge-danger">
 <form class="form-row " method="POST" action="admin/sanpham/them" enctype="multipart/form-data">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -30,10 +43,19 @@
   
   <div class="form-group col-4" style="height: 300px; border:1px solid black;" >
     <label >Ảnh Sản phẩm</label>
-     <div class="col-12"><input type="file" class="form-control" name="anhnen" ></div>
+        <div style="display: flex;" class="col-12 row">
+     <div class="col-6 borderip" style="position: relative;">
+      <input type="file" class="form-control anh" name="anhnen">
+      <img src="" width="100%" alt="">
+    </div>
+     <div class="col-6 borderip"><input type="file" class="form-control anh" name="anh1" ><img src="public/fontend_lib/images/products/medium/products-01.jpg" width="100%" alt=""></div>
+     <div class="col-6 borderip"><input type="file" class="form-control anh" name="anh2" ><img src="public/fontend_lib/images/products/medium/products-01.jpg" width="100%" alt=""></div>
+     <div class="col-6 borderip"><input type="file" class="form-control anh" name="anh3" ><img src="public/fontend_lib/images/products/medium/products-01.jpg" width="100%" alt=""></div>
+    </div>
+<!--      <div class="col-12"><input type="file" class="form-control" name="anhnen" ></div>
      <div class="col-4"><input type="file" class="form-control" name="anh1" ></div>
      <div class="col-4"><input type="file" class="form-control" name="anh2" ></div>
-     <div class="col-4"><input type="file" class="form-control" name="anh3" ></div>
+     <div class="col-4"><input type="file" class="form-control" name="anh3" ></div> -->
 
      
    </div>
@@ -73,4 +95,15 @@
   
 </script> -->
 
+@endsection
+@section('script')
+<script>
+  $(document).ready(function(){
+
+           $(".anh").change(function(){
+               var id = $(this).data('id');
+               $('#nut'+id).show();
+           })
+  })
+</script>
 @endsection

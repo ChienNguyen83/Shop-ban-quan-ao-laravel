@@ -32,9 +32,9 @@
 	       <?php $i=1 ?>
 	       @foreach ($SanPham as $SanPham)
 
-			<tr>
+			<tr id="tbsp{{$SanPham->MaSP}}">
 				<td>{{$i++}}</td>
-				<td><img  src="{{$SanPham->AnhNen}}" width="60" height="50"></td>
+				<td><img  src="public/{{$SanPham->AnhNen}}" width="60" height="50"></td>
 				<td>{{$SanPham->TenSP}}</td>
 				<td>{{$SanPham->DanhMuc->TenDM}}</td>
 				<td>{{$SanPham->ThuongHieu->TenNCC}}</td>
@@ -66,7 +66,7 @@
 				
 				
 				<td><a href="admin/sanpham/sua/{{$SanPham->MaSP}}" ><i class="far fa-edit"></i></a></td>
-				<td><a href="admin/sanpham/xoa/{{$SanPham->MaSP}}" ><i class="fas fa-backspace"></i></a></td>
+				<td><button data-url="{{ route('XoaSP',$SanPham->MaSP)}}" data-id="{{$SanPham->MaSP}}" class="xoabtn" style="border:none;"><i class="fas fa-backspace"></i></button></td>
 			</tr>
 	      @endforeach
 			
@@ -84,4 +84,43 @@
 	</div>
 
 </div>
+@endsection
+@section('script')
+<script>
+	
+	$(document).ready(function(){
+		
+         $('.xoabtn').click(function(){
+         	var id = $(this).data('id');
+            var url = $(this).attr('data-url')
+         	if (confirm("Bạn có chắc muốn xóa Không?")) {
+                       $.ajax({
+                        type: 'post',
+                        url: url,
+                        data: {
+                           _token: "{{ csrf_token() }}",
+                          MaSP: id,
+                          
+                        },
+                        success: function(response) {
+                      
+                          location.reload();
+                          // console.log(response.data);
+                       
+
+                          
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                          //xử lý lỗi tại đây
+                        }
+                      });
+                
+         	}
+         	else {
+
+         	}
+
+         });
+	});
+</script>
 @endsection

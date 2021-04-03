@@ -30,7 +30,13 @@ class DanhMuc extends Model
 
             return $updated;
     }
-    protected function XoaDM ($MaDM){
+    protected function XoaDM($MaDM){
+        
+        $delesp = DB::table('SanPham')->where('MaDM',$MaDM)->get();
+        foreach ($delesp as $value) {
+            $delectsp = DB::table('ChiTietSanPham')->where('MaSP',$value->MaSP)->delete();
+        }
+        $delesp = DB::table('SanPham')->where('MaDM',$MaDM)->delete();
     	$delete = DB::table('DanhMuc')->where('MaDM', '=', $MaDM)->delete();
     }
     

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class DanhMucController extends Controller
 {
+
+
+
     public function getDanhSach() {
     	$DanhMuc = DanhMuc::all();
     	// print_r($DanhMuc);
@@ -62,8 +65,17 @@ class DanhMucController extends Controller
     	return redirect('admin/danhmuc/danhsach');
     	
     }
-    public function getXoa($MaDM){
-         $delete = $danhmuc = DanhMuc::XoaDM($MaDM);
-         return redirect('admin/danhmuc/danhsach');
+    public function postXoa(Request $request){
+    
+        $MaDM = $request->MaDM;
+        $xoa = DanhMuc::XoaDM($MaDM);
+
+        return response()->json([
+            'data'=>$MaDM,
+            'message'=>'Tạo sinh viên thành công'
+        ],200);
+         // $delete = $danhmuc = DanhMuc::XoaDM($MaDM);
+         // return redirect('admin/danhmuc/danhsach');
+
     }
 }
