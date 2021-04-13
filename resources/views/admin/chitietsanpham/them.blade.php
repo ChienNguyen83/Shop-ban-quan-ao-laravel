@@ -35,11 +35,11 @@
       </div>
       <div class="btn-group col-3 row">
         <label >Số Lượng</label>
-        <input type="number" class="form-control" id="soluong" name="soluong" >
+        <input type="number" required="Không được bỏ trống trường này" class="form-control" id="soluong" name="soluong" >
       </div>
       <div class="btn-group col-3 row">
         <label >Giá</label>
-        <input type="number" class="form-control" name="gia" >
+        <input type="number" required="Không được bỏ trống trường này" class="form-control" name="gia" >
       </div>
 <!--       <div class="btn-group col-3 row">
         <label >.....</label><br>

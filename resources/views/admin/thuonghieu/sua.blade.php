@@ -11,7 +11,7 @@
     </div>
     <div class="form-group col-sm-5">
     	<label class="m-auto" for="">Sửa thương hiệu</label>
-    	<input type="hidden" name="{{$thuonghieu->MaNCC}}">
+    	<input type="hidden" name="TH" value="{{$thuonghieu->MaNCC}}">
     	
     	<input type="text" class="form-control" name="Ten"  required value="{{$thuonghieu->TenNCC}}">
     	

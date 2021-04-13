@@ -36,10 +36,17 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow" style="margin-top: 45px">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nguyen Chien<?php 
-                // echo $nv['TenNV'] 
-                ?> </span>
-                <img class="img-profile rounded-circle" src="admin_backend/template/img/avatar.png">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                      <?php 
+                     $name = Session::get('admin_name');
+                            if ($name) {
+                              echo $name;
+                            
+                            }
+
+                    ?>
+                 </span>
+                <img class="img-profile rounded-circle" src="public/admin_backend/template/img/avatar.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -48,7 +55,7 @@
                   Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="logout.php" >
+                <a class="dropdown-item" href="{{route('Logout')}}" >
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
@@ -61,3 +68,4 @@
       </div>
       </div>
     </div>
+

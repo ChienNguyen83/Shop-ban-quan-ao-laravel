@@ -41,7 +41,8 @@
             <tr>
                 <td>{{$i++}}</td><td>{{$Mau->MaMau}}</td>
                 <!-- <td><a href="admin/mau/sua/{{$Mau->MaMau}}"><i class="far fa-edit"></i></a></td> -->
-                <td><a href="admin/sanpham/xoamau/{{$Mau->MaMau}}"><i class="fas fa-backspace"></i></a></td>
+
+                <td><button class="xoabtn" style="border: none;" data-id="{{$Mau->MaMau}}" data-url="{{route('XoaMau',$Mau->MaMau)}}" ><i class="fas fa-backspace"></i></button></td>
             </tr>
             @endforeach
             
@@ -53,4 +54,45 @@
     </div>
     
 </div>
+@endsection
+@section('script')
+<script>
+    
+    $(document).ready(function(){
+        
+         $('.xoabtn').click(function(){
+            var id = $(this).data('id');
+            var url = $(this).attr('data-url');
+            
+            if (confirm("Bạn có chắc muốn xóa không?")) {
+                if (confirm("Tất cả sản phẩm trong danh mục này sẽ bị Xóa?")) {
+                       $.ajax({
+                        type: 'post',
+                        url: url,
+                        data: {
+                           _token: "{{ csrf_token() }}",
+                          MaMau: id,
+                          
+                        },
+                        success: function(response) {
+                      
+                          location.reload();
+                          // console.log(response.data);
+                       
+
+                          
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                          //xử lý lỗi tại đây
+                        }
+                      });
+                }
+            }
+            else {
+
+            }
+
+         });
+    });
+</script>
 @endsection

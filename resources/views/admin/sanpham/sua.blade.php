@@ -2,21 +2,46 @@
 
 @section('content')
  <style>
-   .anh {
-     display: inline-block;
-     width: 100%;
-     height: 100%;
-     position: absolute;
-     opacity: 0;
+  .avata-wrapper{
+  position: relative;
+  height: 130px;
+  width: 130px;
+  /*margin: 50px auto;*/
+  border-radius: 15%;
+  overflow: hidden;
+  box-shadow: 1px 1px 15px -5px black;
+  transition: all .3s ease;
+}
+.avata-wrapper:hover {
+  transform: scale(1.05);
+    cursor: pointer;
+}
+   .avata-wrapper:hover .profile-pic{
+        opacity: .5;
    }
-   .borderip {
-    border: 1px solid;
-    padding:3px;
-   }
+     .upload-button {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;}
+     .fa-arrow-circle-up{
+      position: absolute;
+      font-size: 120px;
+      top: 2px;
+      left: 2.5px;
+      text-align: center;
+      opacity: 0;
+      transition: all .3s ease;
+      color: #34495e;
+      
+    }
+    .avata-wrapper:hover .fa-arrow-circle-up{
+      opacity: .9;
+    }
  </style>
   <hr class="badge-danger">
   @foreach ($SanPham as $sp)
-<form class="form-row " method="POST" action="admin/sanpham/sua/{$sp->MaSP}" enctype="multipart/form-data">
+<form class="form-row " method="POST" action="admin/sanpham/sua/{{$sp->MaSP}}" enctype="multipart/form-data">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
   
     <div class="form-group col-5">
@@ -26,18 +51,24 @@
     <div class="form-group col-3">
     	<label >Danh Mục</label>  
     	<select name="madm" class="form-control browser-default custom-select">
-    		@foreach ($DanhMuc as $DanhMuc)
-        	<option value="{{$DanhMuc->MaDM}}">{{$DanhMuc->TenDM}}</option>
-        	@endforeach
+    		@foreach ($DanhMucOfSP as $key => $DanhMuc)
+        	<option value="{{$DanhMuc['MaDM']}}">{{$DanhMuc['TenDM']}}</option>
+        @endforeach
+        @foreach ($DanhMucKhac as $key => $value)
+          <option value="{{$value['MaDM']}}">{{$value['TenDM']}}</option>
+        @endforeach
     		
       </select>
   </div>
   <div class="form-group col-2">
     <label >Thương Hiệu</label>  
       <select name="mancc" class="form-control browser-default custom-select">
-      	@foreach ($thuonghieu as $thuonghieu)
-          <option value="{{$thuonghieu->MaNCC}}">{{$thuonghieu->TenNCC}}</option>
-          @endforeach
+    @foreach ($ThuongHieuofSP as $key => $ThuongHieu)
+          <option value="{{$ThuongHieu['MaTH']}}">{{$ThuongHieu['TenTH']}}</option>
+        @endforeach
+        @foreach ($ThuongHieuKhac as $key => $value)
+          <option value="{{$value['MaTH']}}">{{$value['TenTH']}}</option>
+        @endforeach
         
       </select>
   </div>
@@ -45,20 +76,57 @@
     
   </div>
   
-  <div class="form-group col-4" style=" border:1px solid black;" >
+  <div class="form-group col-4">
     <label >Ảnh Sản phẩm</label>
-    <div style="display: flex;" class="col-12 row">
-     <div class="col-6 borderip" style="position: relative;">
-      <input type="file" class="form-control anh" name="anhnen">
-      <img src="{{$sp->AnhNen}}" width="100%" alt="">
+
+
+
+
+
+
+<div style="display: flex;" class="col-12 row">
+           
+           <div class="avata-wrapper m-2 ml-4">
+            <img class="profile-pic" style="width: 100%"  src="{{$sp->AnhNen}}" />
+            <div class="upload-button">
+              <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+            </div>
+            <input class="file-upload form-control" style="opacity: 0" type="file" name="anhnen" accept="image/*"/>
+            <span style="z-index: 3">Ảnh Nền</span>
+          </div>
+
+    <div class="avata-wrapper m-2">
+            <img class="profile-pic" style="width: 100%"  src="{{$sp->Anh1}}" />
+            <div class="upload-button1">
+              <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+            </div>
+            <input class="file-upload1 form-control" style="opacity: 0" name="anh1" type="file" accept="image/*"/>
     </div>
-     <div class="col-6 borderip"><input type="file" class="form-control anh" name="anh1" ><img src="public/{{$sp->Anh1}}" width="100%" alt=""></div>
-     <div class="col-6 borderip"><input type="file" class="form-control anh" name="anh2" ><img src="public/{{$sp->Anh2}}" width="100%" alt=""></div>
-     <div class="col-6 borderip"><input type="file" class="form-control anh" name="anh3" ><img src="public/{{$sp->Anh3}}" width="100%" alt=""></div>
+        <div class="avata-wrapper m-2 ml-4">
+            <img class="profile-pic" style="width: 100%"  src="{{$sp->Anh2}}" />
+            <div class="upload-button2">
+              <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+            </div>
+            <input class="file-upload2 form-control" style="opacity: 0" name="anh2" type="file" accept="image/*"/>
     </div>
+        <div class="avata-wrapper m-2">
+            <img class="profile-pic" style="width: 100%"   src="{{$sp->Anh3}}" />
+            <div class="upload-button3">
+              <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+            </div>
+            <input class="file-upload3 form-control" name="anh3" style="opacity: 0" type="file" accept="image/*"/>
+    </div>
+   </div>
+
+
      
    </div>
   <div class="form-group col-8" ><label >Mô Tả</label><textarea  class="ckeditor" name="mota">{{$sp->MoTa}}</textarea> </div>
+      <div class="form-group col-sm-4 m-auto"><br>
+  <input type="submit" class="form-control badge-info" value="Cập Nhật" name="xlthem">
+</div> 
+
+ </form>
   @endforeach
 
 
@@ -142,39 +210,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
 
 
 
 
-    <div class="form-group col-sm-4 m-auto"><br>
-  <input type="submit" class="form-control badge-info" value="Cập Nhật" name="xlthem">
-</div> 
 
- </form>
 
 
 
@@ -212,13 +253,53 @@
                var id = $(this).data('id');
                $('#nut'+id).show();
            })
+
+          //Xử lý ảnh
+var readURL = function(input) {
+  // console.log(input.childNodes[5]);
+  // console.log(input.childNodes[1]);
+  var ipelemet = input.childNodes[5];
+  var imgelemet = input.childNodes[1];
+  console.log(imgelemet);
+  console.log($('.profile-pic')[0]);
+        if (ipelemet.files || ipelemet.files[0]) {
+            var reader = new FileReader();
+            console.log(ipelemet.files);
+            reader.onload = function (e) {
+              // console.log($(imgelemet).attr('src'));
+                $(imgelemet).attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(ipelemet.files[0]);
+        }
+    }
+   
+    $(".avata-wrapper").on('change', function(){
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+    $(".upload-button1").on('click', function() {
+       $(".file-upload1").click();
+    });
+    $(".upload-button2").on('click', function() {
+       $(".file-upload2").click();
+    });
+    $(".upload-button3").on('click', function() {
+       $(".file-upload3").click();
+    });
+
+
+           //update giá và số lượng
            $(".update").click(function () {
                submitForm();
                $(this).hide();
            })
 
           function submitForm (){
-
+                  
                      $(".formct").submit(function(e){
                      e.preventDefault();
                       var id = $(this).data('id');

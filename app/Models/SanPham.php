@@ -53,10 +53,10 @@ class SanPham extends Model
     	// move_uploaded_file($file['pathName'], 'Anhsp/'.$file['originalName']);
     	$file_name = $file->getClientOriginalName();
     	$randomName = Str::random(4)."_".$file_name;
-    	while (file_exists('Anhsp/'.$randomName)) {
+    	while (file_exists('public\admin_backend\Anhsp'.$randomName)) {
     	    $randomName = Str::random(4)."_".$file_name;
     	}
-    	$success=$file->move('Anhsp',$randomName);
+    	$success=$file->move('public\admin_backend\Anhsp',$randomName);
         return $success;
     }
     public function DanhMuc(){
@@ -98,20 +98,61 @@ class SanPham extends Model
     }
 
     protected function getSPbyDM($MaDM){
-      $sp = DB::table('SanPham')->where('MaDM',$MaDM)->orderBy('TenSP', 'desc')->get();
+      $sp = DB::table('SanPham')->where('MaDM',$MaDM)->orderBy('TenSP', 'desc')->paginate(16);
+      return $sp;
+    }
+        protected function getSPbyTH($MaNCC){
+      $sp = DB::table('SanPham')->where('MaNCC',$MaNCC)->orderBy('TenSP', 'desc')->get();
       return $sp;
     }
 
     protected function getGiaSPbyMa($MaSP) {
       $sp = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->get();
+
       $arr = array();
       foreach ($sp as $value) {
          array_push($arr,$value->DonGia);
       }
-      if (min($arr)==max($arr)) {
-        return $gia = min($arr);
+      // print_r($arr[0]);
+      // echo(min($arr));
+          $max = null;
+          $position = null;
+ 
+        for ($i = 0; $i < count($arr); $i++)
+        {
+            if ($max == null){
+                $max = $arr[$i];
+              
+            }
+            else {
+                if ($arr[$i] > $max){
+                    $max = $arr[$i];
+                  
+                }
+            }
+        }
+
+          $min = null;
+          $position = null;
+ 
+        for ($i = 0; $i < count($arr); $i++)
+        {
+            if ($min == null){
+                $min = $arr[$i];
+              
+            }
+            else {
+                if ($arr[$i] < $min){
+                    $min = $arr[$i];
+                  
+                }
+            }
+        }
+
+      if ($min==$max) {
+        return $gia = $min;
       } else {
-         $gia = min($arr)."~".max($arr);
+         $gia = $min."~".$max; 
          return $gia;
       }
      
@@ -121,6 +162,45 @@ class SanPham extends Model
       $xoa = DB::table('SanPham')->where('MaSP',$MaSP)->delete();
       return $xoa;
     }
+    protected function getDMbysp($MaSP){
+      $sp = DB::table('SanPham')->where('MaSP',$MaSP)->get();
+      // $dm = $sp->MaDM;
+      
+      foreach ($sp as $value) {
+        $madm = ($value->MaDM);
+        $dm = DB::table('DanhMuc')->where('MaDM',$madm)->get();
+        foreach ($dm as $value) {
+           $tendm = $value->TenDM;
+           $danhmu = array('MaDM'=>$madm,'TenDM'=>$tendm);
+           $danhmuc = array($danhmu);
+        //    $danhmuc = (object)$danh;
+        // }
+      }
+      return $danhmuc;
+    }
+  }
+      protected function getTHbyMasp($MaSP){
+      $sp = DB::table('SanPham')->where('MaSP',$MaSP)->get();
+      // $dm = $sp->MaDM;
+      
+      foreach ($sp as $value) {
+        $math = ($value->MaNCC);
+        $th = DB::table('NhaCC')->where('MaNCC',$math)->get();
+        foreach ($th as $value) {
+           $tenth = $value->TenNCC;
+           $thuonghi = array('MaTH'=>$math,'TenTH'=>$tenth);
+           $thuonghieu = array($thuonghi);
+        //    $danhmuc = (object)$danh;
+        // }
+      }
+      return $thuonghieu;
+    }
+  }
+
+  protected function getspbyMaSP($MaSP){
+    $sp = DB::table('SanPham')->where('MaSP',$MaSP)->get();
+    return $sp;
+  }
 
 
    //  public function themSP($TenSP,$MaDM,$MaNCC,$Mota,$AnhNen,$Anh1,$Anh2,$Anh3){

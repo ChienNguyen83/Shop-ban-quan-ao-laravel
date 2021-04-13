@@ -55,6 +55,14 @@ class ChiTietSanPham extends Model
         $ctspbyMau = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->where('MaMau',$MaMau)->get();
         return $ctspbyMau;
     }
+    protected function Tongsl($MaSP){
+        $sp = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->get();
+        $tongsl = 0;
+        foreach ($sp as $value) {
+            $tongsl = $tongsl+$value->SoLuong;
+        }
+        return $tongsl;
+    }
 
 
 

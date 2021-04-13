@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\ChiTietSanPham;
 use App\Models\DanhMuc;
 use App\Models\SanPham;
-use App\Models\thuonghieu;
+use App\Models\ThuongHieu;
 use Illuminate\Http\Request;
 
 class ajaxController extends Controller
@@ -81,7 +81,7 @@ class ajaxController extends Controller
              $thuonghieu = ThuongHieu::all();
              foreach ($thuonghieu as $value) {
                 echo '<li>
-                    <button class="danhmuc" data-id="'.$value->MaNCC.'" style="border:none; padding:0;font: inherit;font-size: 13px;
+                    <button class="thuonghieu" data-id="'.$value->MaNCC.'" style="border:none; padding:0;font: inherit;font-size: 13px;
                  " >
 
                       '.$value->TenNCC.'
@@ -100,6 +100,8 @@ class ajaxController extends Controller
               $ctsp = SanPham::getGiaSPbyMa($value->MaSP);
 
                 array_push($gia,$ctsp);
+            // echo $ctsp;
+            // echo '<br>';
 
            }
            return response()->json([
@@ -110,5 +112,41 @@ class ajaxController extends Controller
       
 
     }
+   public function getSPbyThuongHieu($MaNCC){
+           $th = SanPham::getSPbyTH($MaNCC);
+           $gia = array();
+           
+           // print_r($sp);
+           foreach ($th as $value) {
+        
+              $ctsp = SanPham::getGiaSPbyMa($value->MaSP);
+
+                array_push($gia,$ctsp);
+
+           }
+           return response()->json([
+            'data'=>$th,
+            'gia'=>$gia,
+            'message'=>'Tạo sinh viên thành công'
+        ],200);
+      
+
+    }
+  public function getTenSP(){
+    $sp = SanPham::all();
+    $arrtensp = array();
+    foreach ($sp as $value) {
+      array_push($arrtensp, $value->TenSP);
+    }
+    
+    return $arrtensp;
+  }
+
+  public function getAllSize($MaSP,$MaMau){
+        $size = ChiTietSanPham::getSizebyMau($MaSP,$MaMau);
+           return response()->json([
+            'data'=>$size,
+        ],200);
+  }
 }
 

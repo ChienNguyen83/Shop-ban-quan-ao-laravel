@@ -29,7 +29,7 @@ class ThemChiTietSPController extends Controller
                     $ctsp->DonGia = $Gia;
                     $ctsp->save();
                 }
-                return view('admin.sanpham.back');
+                return redirect('admin/sanpham/back');
          }
         
         // $ChiTietSanPham = ChiTietSanPham::all();
@@ -41,39 +41,21 @@ class ThemChiTietSPController extends Controller
         // echo $ma;
 
            $MaSanPham = ChiTietSanPham::getCTSPbyMaSP($MaSP);
-   
-
-
-
             $Mau = SanPham::getMau();
-            $Mau1 = ChiTietSanPham::getCTSPbyMa($MaSP);
-            $Mau2 = SanPham::getMau();
-            $Mau3 = SanPham::getMau();
-            $Mau4 = SanPham::getMau();
-           //  $arr = array();
+            // $Mau1 = ChiTietSanPham::getCTSPbyMa($MaSP);
+            // $Mau2 = SanPham::getMau();
+            // $Mau3 = SanPham::getMau();
+            // $Mau4 = SanPham::getMau();
 
-           //  foreach ($Mau as $value) {
-           //             array_push($arr,$value->MaMau) ;
-           //         }
-           //  $uniarr = array_unique($arr);
-
-           // foreach ($Mau1 as $value) {
-           //         if (in_array($value->MaMau, $uniarr)) {
-           //              $uniarr=  array_diff($uniarr, array($value->MaMau));
-           //         }
-           //     }    
-
-
-                // var_dump($uniarr);  
             return view('admin.chitietsanpham.themspdaco',[
                 'MaSanPham'=>$MaSanPham,
                   // 'arr'=>$arr,
            
                   // 'uniarr'=>$uniarr,
                   'Mau'=>$Mau,
-                  'Mau2'=>$Mau2,
-                  'Mau3'=>$Mau3,
-                  'Mau4'=>$Mau4
+                  // 'Mau2'=>$Mau2,
+                  // 'Mau3'=>$Mau3,
+                  // 'Mau4'=>$Mau4
               ]);
             
     }

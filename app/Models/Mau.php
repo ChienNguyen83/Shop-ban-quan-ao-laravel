@@ -16,6 +16,12 @@ class Mau extends Model
        
     ];
         protected function XoaMau ($MaMau){
+        $delesp = DB::table('ChiTietSanPham')->where('MaMau',$MaMau)->delete();
+
+        // foreach ($delesp as $value) {
+        //     $delectsp = DB::table('ChiTietSanPham')->where('MaSP',$value->MaSP)->delete();
+        // }
+        // $delesp = DB::table('SanPham')->where('MaMau',$MaMau)->delete();
     	$delete = DB::table('Mau')->where('MaMau', '=', $MaMau)->delete();
     }
 }

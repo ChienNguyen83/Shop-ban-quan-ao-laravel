@@ -43,7 +43,7 @@
               </div>
               <div class="clearfix">
               </div>
-              <div class="clolr-filter leftbar">
+<!--               <div class="clolr-filter leftbar">
                 <h3 class="title">
                   Color
                 </h3>
@@ -109,10 +109,10 @@
                     </a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
               <div class="clearfix">
               </div>
-              <div class="product-tag leftbar">
+<!--               <div class="product-tag leftbar">
                 <h3 class="title">
                   Products 
                   <strong>
@@ -161,6 +161,13 @@
                     </a>
                   </li>
                 </ul>
+              </div> -->
+<!--               <div class="clearfix">
+              </div>
+              <div class="others leftbar">
+                <h3 class="title">
+                  Others
+                </h3>
               </div>
               <div class="clearfix">
               </div>
@@ -168,14 +175,7 @@
                 <h3 class="title">
                   Others
                 </h3>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="others leftbar">
-                <h3 class="title">
-                  Others
-                </h3>
-              </div>
+              </div> -->
               <div class="clearfix">
               </div>
               <div class="fbl-box leftbar">
@@ -245,12 +245,10 @@
 
       $(document).ready(function(){
 
-
-
-          $.get('admin/sanpham/ajax/danhmuc', function(data){
+          $.get('ajax/danhmuc', function(data){
                     $('#danhmuc').html(data);
           });
-                    $.get('admin/sanpham/ajax/thuonghieu', function(data){
+          $.get('ajax/thuonghieu', function(data){
                     $('#thuonghieu').html(data);
           });
 

@@ -12,7 +12,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.php">
           <i class="mdi mdi-home menu-icon"></i>
-          <span>ONI SHOES</span></a>
+          <span>Oche Shop</span></a>
       </li>
 
       <!-- Divider -->
@@ -120,7 +120,7 @@
 
      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages0" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
+          <i class="far fa-copyright"></i>
           <span>Thương hiệu</span>
         </a>
         <div id="collapsePages0" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">

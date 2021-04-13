@@ -7,7 +7,7 @@
 	  <h4 class="page-title">
 	    <span class="page-title-icon bg-gradient-primary text-white mr-2">
 	      
-	    </span> ADMIN - ONI SHOES &#160;<i class="fas fa-chevron-right" style="font-size: 18px"></i>&#160; Sản Phẩm</h4>
+	    </span> Oche Shop &#160;<i class="fas fa-chevron-right" style="font-size: 18px"></i>&#160; Sản Phẩm</h4>
 	</div>
 	<div class="card card-body ">
 		<div class="row">
@@ -34,7 +34,7 @@
 
 			<tr id="tbsp{{$SanPham->MaSP}}">
 				<td>{{$i++}}</td>
-				<td><img  src="public/{{$SanPham->AnhNen}}" width="60" height="50"></td>
+				<td><img  src="{{$SanPham->AnhNen}}" width="60" height="50"></td>
 				<td>{{$SanPham->TenSP}}</td>
 				<td>{{$SanPham->DanhMuc->TenDM}}</td>
 				<td>{{$SanPham->ThuongHieu->TenNCC}}</td>

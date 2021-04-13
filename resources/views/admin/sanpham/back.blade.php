@@ -14,15 +14,15 @@
   <base href="{{asset('')}}">
   <!-- Custom fonts for this admin_backend/template-->
 
-  <link href="admin_backend/template/webroot/font/Font Awesome/css/all.min.css" rel="stylesheet" type="text/css">
-   <link href="admin_backend/template/mdi/css/materialdesignicons.min.css" rel="stylesheet">
-  <link href="admin_backend/template/cssfont.css" rel="stylesheet">
+  <link href="public/admin_backend/template/webroot/font/Font Awesome/css/all.min.css" rel="stylesheet" type="text/css">
+   <link href="public/admin_backend/template/mdi/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="public/admin_backend/template/cssfont.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link href="admin_backend/template/css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="admin_backend/template/bootstrap/mdb.lite.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="admin_backend/template/style.css">
-  <script src="admin_backend/template/webroot/jquery/jquery.js"></script>
+  <link href="public/admin_backend/template/css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="public/admin_backend/template/bootstrap/mdb.lite.min.css" rel="stylesheet">
+  <link rel="public/stylesheet" href="admin_backend/template/style.css">
+  <script src="public/admin_backend/template/webroot/jquery/jquery.js"></script>
 
 </head>
 <body>
@@ -44,22 +44,22 @@
 </body>
 <!-- </body> -->
   <!-- Bootstrap core JavaScript-->
-  <script src="admin_backend/template/vendor/jquery/jquery.min.js"></script>
-  <script src="admin_backend/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="public/admin_backend/template/vendor/jquery/jquery.min.js"></script>
+  <script src="public/admin_backend/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="admin_backend/template/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="public/admin_backend/template/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="admin_backend/template/js/sb-admin-2.min.js"></script>
+  <script src="public/admin_backend/template/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="admin_backend/template/vendor/chart.js/Chart.min.js"></script>
+  <script src="public/admin_backend/template/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="admin_backend/template/js/demo/chart-area-demo.js"></script>
-  <script src="admin_backend/template/js/demo/chart-pie-demo.js"></script>
-  <script src="admin_backend/template/ckeditor/ckeditor.js"></script>
+  <script src="public/admin_backend/template/js/demo/chart-area-demo.js"></script>
+  <script src="public/admin_backend/template/js/demo/chart-pie-demo.js"></script>
+  <script src="public/admin_backend/template/ckeditor/ckeditor.js"></script>
 
 
 

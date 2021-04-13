@@ -12,13 +12,10 @@ class DanhMucController extends Controller
 
 
     public function getDanhSach() {
+
     	$DanhMuc = DanhMuc::all();
-    	// print_r($DanhMuc);
     	return view('admin.danhmuc.danhsach',['DanhMuc'=>$DanhMuc]);
-   //  	echo '<pre>';
-			// print_r($DanhMuc);  
-    	// $data = DB::select('select * from DanhMuc');
-    	// var_dump($data);
+  
     }
     public function getThem() {
     	return view('admin.danhmuc.them');

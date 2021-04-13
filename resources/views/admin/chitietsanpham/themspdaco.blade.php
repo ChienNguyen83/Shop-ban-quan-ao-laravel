@@ -3,7 +3,7 @@
 
 @section('content')
 
-  <form class="form-row " method="POST" action="admin/sanpham/themchitietsp" enctype="multipart/form-data">
+  <form class="form-row" id="formthemctsp" method="POST" action="admin/sanpham/themchitietsp" enctype="multipart/form-data">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
 
 
@@ -25,7 +25,7 @@
         <div class="btn-group col-3 row">
           <label class="mr-5">Mau</label>
       <select name="mau" class="form-control browser-default custom-select" id="mau">
-
+          <option id="chonmau" value="faile">Chọn Màu</option>
           @foreach ($Mau as $Mau) 
           <option value="{{$Mau->MaMau}}">{{$Mau->MaMau}}</option>
           @endforeach
@@ -34,11 +34,11 @@
       </div>
       <div class="btn-group col-3 row">
         <label >Số Lượng</label>
-        <input type="number" class="form-control" id="soluong" name="soluong" >
+        <input type="number" required class="form-control" id="soluong" name="soluong" >
       </div>
       <div class="btn-group col-3 row">
         <label >Giá</label>
-        <input type="number" class="form-control" name="gia" >
+        <input type="number" required class="form-control" name="gia" >
       </div>
       <br>
       <hr>
@@ -72,15 +72,22 @@
 @section('script')
    <script>
       $(document).ready(function(){
+
          $('#mau').change(function(){
           var MaMau = $(this).val();
           var MaSP = $('#MaSP').val();
-          // alert(MaSP);
-          // alert('admin/sanpham/ajax/'+MaSP+'/'+MaMau);
           $.get('admin/sanpham/ajax/'+MaSP+'/'+MaMau, function(data){
                     $('#Masize').html(data);
           });
 
+         });
+
+         $('#formthemctsp').submit(function(e){
+           var MaMau = $('#mau').val();
+           if (MaMau == 'faile') {
+            alert('Bạn chưa chọn màu');
+            e.preventDefault();
+           }
          });
       });
    </script>

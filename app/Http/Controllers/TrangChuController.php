@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\DanhMuc;
+use App\Models\SanPham;
 
 class TrangChuController extends Controller
 {
@@ -12,8 +14,35 @@ class TrangChuController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view ('home');
+    {   
+        $danhmuc = DanhMuc::all();
+        $data = array();
+        foreach ($danhmuc as $value) {
+            $madm = $value->MaDM;
+            $tendm = $value->TenDM;
+            $sp = DB::table('SanPham')->where('MaDM',$madm)->orderBy('TenSP', 'desc')->paginate(8);
+            foreach ($sp as $value) {
+                $value->Gia = SanPham::getGiaSPbyMa($value->MaSP);
+            }
+            array_push($data,[
+                'MaDM'=>$madm,
+                'TenDM'=>$tendm,
+                'SP'=>$sp
+            ]);
+            // foreach ($sp as $value1) {
+            //     array_push($data, [
+            //      'MaDM'=>$madm,
+            //      'TenDM'=>$tendm,
+            //      'sp'=>$value1,
+            //     ]);
+            // }
+        }
+        //         echo '<pre>';
+        // print_r($data);
+        // $data1 = array();
+        // array_push($data1, ['data'=>$data]);
+ 
+        return view ('home',['data'=>$data]);
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Arr;
 use App\Models\DanhMuc;
 use App\Models\SanPham;
 use App\Models\ThuongHieu;
@@ -40,20 +41,62 @@ class SanPhamController extends Controller
    //  	  	echo '<pre>';
 			// print_r($danhmuc);  
 			// $SP= SanPham::all();
+      
+    
             $SanPham = SanPham::getTenSP($MaSP);
             $SanPham1 = SanPham::getTenSP($MaSP);
             $ctsp = ChiTietSanPham::getCTSPbyMa($MaSP);
-            $DanhMuc = DanhMuc::all();
-            $thuonghieu = ThuongHieu::all();
-            // $Size = Size::all();
+            $DanhMucOfSP = SanPham::getDMbysp($MaSP);
+            $AllDanhMuc = DanhMuc::all();
+            
+            //Xu Ly danh sach danh muc
+            $DMKhac = array();
+            foreach ($AllDanhMuc as $value) {
+                array_push($DMKhac, $value->MaDM);
+            }
+             
+            if (in_array($DanhMucOfSP[0]['MaDM'], $DMKhac)) {
+                        $DMKhac=  array_diff($DMKhac,array($DanhMucOfSP[0]['MaDM']));
+                   }
+            
+            $DanhMucKhac = array();
+            foreach ($DMKhac as $value) {
+                $TenDM = DanhMuc::getTenDM($value);
+           
+                $al = array("MaDM"=>$value,"TenDM"=>$TenDM[0]->TenDM);
+                array_push($DanhMucKhac,$al );
+            }
+            
+            //Xu ly danh sach thuong hieu
+            $AllThuongHieu = ThuongHieu::all();
+            $ThuongHieuofSP = SanPham::getTHbyMasp($MaSP);
+            $THKhac = array();
+            foreach ($AllThuongHieu as $value) {
+                array_push($THKhac, $value->MaNCC);
+            }
+             
+            if (in_array($ThuongHieuofSP[0]['MaTH'], $THKhac)) {
+                        $THKhac=  array_diff($THKhac,array($ThuongHieuofSP[0]['MaTH']));
+                   }
+            
+            $ThuongHieuKhac = array();
+            foreach ($THKhac as $value) {
+                $TenTH = ThuongHieu::getTenTH($value);
+           
+                $arrth = array("MaTH"=>$value,"TenTH"=>$TenTH[0]->TenNCC);
+                array_push($ThuongHieuKhac,$arrth );
+            }
+
+           //Xu ly mau
             $Mau = Mau::all();
-        //     echo '<pre>';
-        // var_dump($Mau);
+        
     	return view('admin.sanpham.sua',['SanPham'=>$SanPham,
         'SanPham1'=>$SanPham1,  
         'ctsp'=>$ctsp,
-        'DanhMuc'=>$DanhMuc,
-        'thuonghieu'=>$thuonghieu,
+        'DanhMucOfSP'=>$DanhMucOfSP,
+        'DanhMucKhac'=>$DanhMucKhac,
+        'ThuongHieuofSP'=>$ThuongHieuofSP,
+        'ThuongHieuKhac'=>$ThuongHieuKhac,
         'Mau'=>$Mau,
 
 
@@ -61,66 +104,66 @@ class SanPhamController extends Controller
     ]);
     }
     public function postSua(Request $request,$MaSP) {
-        
-                if (
-            $request->file('anhnen') && $request->tensp && $request->mota && $request->file('anh1') && $request->file('anh3') && $request->file('anh2') 
-        ) {
-
+        if ($request->madm) {
             $MaDM = (int)$request->madm;
-            $MaNCC = (int)$request->mancc;
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['MaDM'=> $MaDM]);  
+            echo 'thanh cong1';
+        }
+        if ($request->tensp) {
             $TenSP = $request->tensp;
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['TenSP'=> $TenSP]);  
+            echo 'thanh cong2';
+        }
+        if ($request->mancc) {
+            $MaNCC = (int)$request->mancc;
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['MaNCC'=> $MaNCC]);  
+            echo 'thanh cong3';
+        }
+        if ($request->mota) {
             $Mota = $request->mota;
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['Mota'=> $Mota]);  
+            echo 'thanh cong4';
+        }
+        if ($request->file('anhnen')) {
             $AnhNen = SanPham::upAnh($request->file('anhnen'));
-            $Anh1= SanPham::upAnh($request->file('anh1'));
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['AnhNen'=> $AnhNen]);  
+            echo 'thanh cong5';
+        }
+                if ($request->file('anh1')) {
+             $Anh1= SanPham::upAnh($request->file('anh1'));
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['Anh1'=> $Anh1]);  
+            echo 'thanh cong6';
+        }
+                if ($request->file('anh2')) {
             $Anh2= SanPham::upAnh($request->file('anh2'));
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['Anh2'=> $Anh2]);  
+            echo 'thanh cong7';
+        }
+                if ($request->file('anh3')) {
             $Anh3= SanPham::upAnh($request->file('anh3'));
-            $suasp = SanPham::suasp($MaSP,$TenSP,$MaDM,$MaNCC,$Mota,$AnhNen,$Anh1,$Anh2,$Anh3);
-            echo 'cap nhat thanh cong';
+            $updated = DB::table('SanPham')
+            ->where('MaSP', '=', $MaSP)
+            ->update(['Anh3'=> $Anh3]);  
+            echo 'thanh cong8';
         }
-        $ma = $request->masp;
-        // echo ($ma[0]);
-        // $xoa = ChiTietSanPham::Xoa($ma[0]);
-        foreach ($ma as $value) {
-
-            //     $Gia = $request->gia;
-            //     $Soluong = $request->soluong;
-            //     $Size = $request->size;
-            //     $Mau = $request->mau;
-            //     $MaSP = $request->MaSP;
-            // $ctsp = ChiTietSanPham::getCTSPbyMa($value);
-            // foreach ($ctsp as $sp) {
-            //      if ($sp->MaSize == $Size && $sp->MaMau == $Mau && $sp->SoLuong == $Soluong && $sp->DonGia == $Gia ) {
-            //              continue;
-            //          } else {
-            //                 // $xoa = ChiTietSanPham::Xoa($value);
-            //                 $capnhat = ChiTietSanPham::themctsp($value,$Size,$Mau,$Soluong,$Gia);
-            //                 echo 'Cap nhat thanh cong';
-            //          }
-            // }
-          
-            // var_dump($ctsp);
-
-        }
-        foreach ($ma as $value) {
-                $Gia = $request->gia;
-                $Soluong = $request->soluong;
-                $Size = $request->size;
-                $Mau = $request->mau;
-                $MaSP = $request->MaSP;
-            $ctsp = ChiTietSanPham::getCTSPbyMa($value);
-            foreach ($ctsp as $sp) {
-                 if ($sp->MaSize == $Size && $sp->MaMau == $Mau && $sp->SoLuong == $Soluong && $sp->DonGia == $Gia ) {
-                         continue;
-                     } else {
-                            // $xoa = ChiTietSanPham::Xoa($value);
-                            $capnhat = ChiTietSanPham::themctsp($value,$Size,$Mau,$Soluong,$Gia);
-                            echo 'Cap nhat thanh cong';
-                     }
-            }
-
-        }
-    	
+        return redirect('admin/sanpham/danhsach');
+        
     }
+
     public function postThem(Request $request) {
     	//Check xem tên nhập ở form có bị lỗi không
     	// $this->validate($request,
@@ -148,6 +191,12 @@ class SanPhamController extends Controller
         // $MaDM = (int)$request->madm;
 
         // echo gettype($MaDM);
+        // print_r($request->file('anhnen'));
+        // $An= SanPham::upAnh($request->file('anhnen'));
+        // $An= SanPham::upAnh($request->file('anh1'));
+        // $An= SanPham::upAnh($request->file('anh2'));
+        // $An= SanPham::upAnh($request->file('anh3'));
+        // print_r($An);
         if (
             $request->file('anhnen') && $request->tensp && $request->mota && $request->file('anh1') && $request->file('anh3') && $request->file('anh2') 
         ) {
@@ -175,66 +224,13 @@ class SanPhamController extends Controller
             
             // $this->themChiTiet();
             $MaSanPham = SanPham::getMaSP($TenSP);
+            $url = 'admin/sanpham/themspdaco/'.$MaSanPham[0]->MaSP;
+            return redirect($url);
 
-            $Size = SanPham::getSize();
-            $Size1 = SanPham::getSize();
-            $Size2 = SanPham::getSize();
-            $Size3 = SanPham::getSize();
-            $Size4 = SanPham::getSize();
-
-            $Mau = SanPham::getMau();
-            $Mau1 = SanPham::getMau();
-            $Mau2 = SanPham::getMau();
-            $Mau3 = SanPham::getMau();
-            $Mau4 = SanPham::getMau();
-            // echo $MaSanPham;
-            return view('admin.chitietsanpham.them',[
-                'MaSanPham'=>$MaSanPham,
-                  'Size'=>$Size,
-                  'Size1'=>$Size1,
-                  'Size2'=>$Size2,
-                  'Size3'=>$Size3,
-                  'Size4'=>$Size4,
-                  'Mau'=>$Mau,
-                  'Mau1'=>$Mau1,
-                  'Mau2'=>$Mau2,
-                  'Mau3'=>$Mau3,
-                  'Mau4'=>$Mau4
-              ]);
             
-            // $themctsp = new ChiTietSanPham;
-            // $themctsp ->MaSP= $themsp->MaSP;
-        // 'MaSP',
-        // 'MaSize',
-        // 'MaMau',
-        // 'SoLuong',
-        // 'DonGia',
-           
 
         }
-        // $Size1 = $request->size1;
-        // $Mau1 = $request->mau1;
-        // foreach ($Size1 as $size1) {
-        //     echo $size1;
-        //     echo $Mau1;
-        // }
-        //         $Size = $request->size;
-        // $Mau = $request->mau;
-        // foreach ($Size as $size) {
-        //     echo $size;
-        //     echo $Mau;
-        // }
-        
 
-        // $Anh1= SanPham::upAnh($request->file('anh1'));
-        // $Anh2= SanPham::upAnh($request->file('anh2'));
-        // $Anh3= SanPham::upAnh($request->file('anh3'));
-        
-        // themSP($TenSP,$MaDM,$MaNCC,$Soluong,$Mota,$DonGia,$AnhNen,$Anh1,$Anh2,$Anh3);
-    	// $danhmuc = new DanhMuc;
-    	// $danhmuc->TenDM = $request->Ten;
-    	// $danhmuc->save();
-    	// return redirect('admin/danhmuc/danhsach');
     	
     }
 
@@ -246,6 +242,9 @@ class SanPhamController extends Controller
             'data'=>$sp,
             'message'=>'Tạo sinh viên thành công'
         ],200);
+    }
+    public function back(){
+        return view('admin.sanpham.back');
     }
 
 

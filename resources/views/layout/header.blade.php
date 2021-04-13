@@ -29,13 +29,13 @@
                               </ul> -->
                            </div>
                            <div class="col-md-6">
-                              <ul class="topmenu">
+ <!--                              <ul class="topmenu">
                                  <li><a href="#">Giới Thiệu</a></li>
                                  <li><a href="#">Tin Tức</a></li>
                                  <li><a href="#">Dịch Vụ</a></li>
                                  <li><a href="#">Tuyển Dụng</a></li>
                                  <li><a href="#">Hỗ Trợ</a></li>
-                              </ul>
+                              </ul> -->
                            </div>
                            <div class="col-md-3">
                               <ul class="usermenu">
@@ -51,36 +51,14 @@
                            <li id="search" class="search">
                               <form><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search"></form>
                            </li>
-                           <li class="option-cart">
-                              <a href="#" class="cart-icon">cart <span class="cart_no">02</span></a>
+                           <li class="option-cart listcart">
+                              <a href="javascript:" onclick="" class="cart-icon">cart <span class="cart_no">02</span></a>
                               <ul class="option-cart-item">
-                                 <li>
-                                    <div class="cart-item">
-                                       <div class="image"><img src="images/products/thum/products-01.png" alt=""></div>
-                                       <div class="item-description">
-                                          <p class="name">Lincoln chair</p>
-                                          <p>Size: <span class="light-red">One size</span><br>Quantity: <span class="light-red">01</span></p>
-                                       </div>
-                                       <div class="right">
-                                          <p class="price">$30.00</p>
-                                          <a href="#" class="remove"><img src="images/remove.png" alt="remove"></a>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <li>
-                                    <div class="cart-item">
-                                       <div class="image"><img src="images/products/thum/products-02.png" alt=""></div>
-                                       <div class="item-description">
-                                          <p class="name">Lincoln chair</p>
-                                          <p>Size: <span class="light-red">One size</span><br>Quantity: <span class="light-red">01</span></p>
-                                       </div>
-                                       <div class="right">
-                                          <p class="price">$30.00</p>
-                                          <a href="#" class="remove"><img src="images/remove.png" alt="remove"></a>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <li><span class="total">Total <strong>$60.00</strong></span><button class="checkout" onClick="location.href='checkout.html'">CheckOut</button></li>
+                                 <div id="change-cart">
+                              
+
+                                 </div>
+                                 <li><span class="total">Total <strong>$60.00</strong></span><button class="checkout" onClick="">CheckOut</button></li>
                               </ul>
                            </li>
                         </ul>
@@ -103,8 +81,8 @@
                                     </ul>
                                  </div> -->
                               </li>
-                              <li><a href="productgird.html">Đồ Nam</a></li>
-                              <li><a href="productlitst.html">Đồ Nữ</a></li>
+                              <li><a href="productgird.html">Bán Chạy</a></li>
+                              <li><a href="productlitst.html">Sản phẩm mới</a></li>
                               <li class="dropdown">
                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Phong Cách</a>
                                  <div class="dropdown-menu mega-menu">
@@ -132,8 +110,7 @@
                                     </div>
                                  </div>
                               </li>
-                              <li><a href="productgird.html">Quà tặng</a></li>
-                              <li><a href="productgird.html">Đồ Trẻ em</a></li>
+                              <li><a href="productgird.html">Khuyến Mãi</a></li>
                               <li><a href="contact.html">Liên Hệ</a></li>
                            </ul>
                         </div>
