@@ -8,35 +8,35 @@
                   <div class="sequence-next"><i class="fa fa-angle-right"></i></div>
                   <ul class="sequence-canvas">
                      <li class="animate-in">
-                        <div class="flat-caption caption1 formLeft delay300 text-center"><span class="suphead">Paris show 2014</span></div>
+                        <div class="flat-caption caption1 formLeft delay300 text-center"><span class="suphead">Trùm sale đậm </span></div>
                         <div class="flat-caption caption2 formLeft delay400 text-center">
-                           <h1>Collection For Winter</h1>
+                           <h1>ƯU ĐÃI KÉP</h1>
                         </div>
                         <div class="flat-caption caption3 formLeft delay500 text-center">
-                           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                           <p>Tặng ngay 1 SET ÁO ĐÔI trị giá 𝟑𝟒𝟎.𝟎𝟎𝟎𝐯𝐧𝐝<br>Với hoá đơn từ 2000K - 2999K</p>
                         </div>
-                        <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
-                        <div class="flat-image formBottom delay200" data-duration="5" data-bottom="true"><img src="public/fontend_lib/images/slider-image-01.png" alt=""></div>
+                        <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">Xem Chi Tiết</a></div>
+                        <div class="flat-image formBottom delay200" data-duration="5" data-bottom="true"><img src="public/fontend_lib/images/slide.jpg" alt=""></div>
                      </li>
                      <li>
                         <div class="flat-caption caption2 formLeft delay400">
-                           <h1>Collection For Winter</h1>
+                           <h1>SALE BLACK FRIDAY</h1>
                         </div>
                         <div class="flat-caption caption3 formLeft delay500">
-                           <h2>Etiam velit purus, luctus vitae velit sedauctor<br>egestas diam, Etiam velit purus.</h2>
+                           <h2>BÙNG NỔ ĐẠI TIỆC SALE LỚN NHẤT TRONG NĂM<br>TOÀN BỘ SẢN PHẨM 𝐆𝐈𝐀̉𝐌 𝐆𝐈𝐀́ 𝟏𝟎%-𝟓𝟎%.</h2>
                         </div>
-                        <div class="flat-button caption5 formLeft delay600"><a class="more" href="#">More Details</a></div>
-                        <div class="flat-image formBottom delay200" data-bottom="true"><img src="public/fontend_lib/images/slider-image-02.png" alt=""></div>
+                        <div class="flat-button caption5 formLeft delay600"><a class="more" href="#">Xem Chi Tiết</a></div>
+                        <div class="flat-image formBottom delay200" data-bottom="true"><img src="public/fontend_lib/images/slide1.jpg" alt=""></div>
                      </li>
                      <li>
                         <div class="flat-caption caption2 formLeft delay400 text-center">
-                           <h1>New Fashion of 2013</h1>
+                           <h1>MÙA 𝐒𝐀𝐋𝐄 LỚN</h1>
                         </div>
                         <div class="flat-caption caption3 formLeft delay500 text-center">
-                           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                           <p>THÁNG 8 TRI ÂN - TÌNH THÂN THẮT CHẶT <br>Mùa tri ân, mùa bày tỏ những tình thân ngọt ngào</p>
                         </div>
-                        <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">More Details</a></div>
-                        <div class="flat-image formBottom delay200" data-bottom="true"><img src="public/fontend_lib/images/slider-image-03.png" alt=""></div>
+                        <div class="flat-button caption4 formLeft delay600 text-center"><a class="more" href="#">Xem Chi Tiết</a></div>
+                        <div class="flat-image formBottom delay200" data-bottom="true"><img src="public/fontend_lib/images/slide2.jpg" alt=""></div>
                      </li>
                   </ul>
                </div>
@@ -230,24 +230,8 @@
                        console.log(response);
                        $('#change-cart').empty();
                        $('#change-cart').html(response);
-                       // var arr = response.data;
-                       // // alert(arr);
-                       // var gia = response.gia;
-                       // var arr1 = new Array();
-                      // alert(arr[1]['TenSP']);
-                      // for (var i = arr.length - 1; i >= 0; i--) {
-                        
-                      //   // alert(arr[i]['DonGia']);
-                      //   // alert(gia[i]);
-                       
-                      //   arr1.push('<div class="col-md-4 col-sm-6"><div class="products"><div class="thumbnail"><a href="#"><img style="height:100%" src="public/'+arr[i]['AnhNen']+'" alt="Product Name"></a></div> <div class="productname">'+arr[i]['TenSP']+'</div><h4 class="price">$'+gia[i]+'</h4><div class="button_group"><button class="button add-cart" type="button"> Add To Cart</button><button class="button compare" type="button"><i class="fa fa-exchange"></i></button><button></div></div>');
-                        
-                      //   $('#sanpham').html(
-
-                      //         arr1
-                      //      );
-                              
-                      // }
+                       $('#cart_no').text($('#total-quanty').val());
+                    
                        
                     },
                     error: function() { 
@@ -256,6 +240,35 @@
                 });
             
          });
+        // click vào 1 elemen sau khi load ajax
+        $('#change-cart').on('click','.remove',function(){
+            var id = $(this).data('id');
+             var url = 'deletecartitem/'+ id;
+            // alert(id);
+            $.ajax({
+                    type: 'GET', //THIS NEEDS TO BE GET
+                    url: url,
+
+                    success: function (response) {
+                       console.log(response);
+                       $('#change-cart').empty();
+                       $('#change-cart').html(response);
+                       // var quanty = $('#total-quanty').val();
+                      
+                       $('#cart_no').text($('#total-quanty').val());
+                       
+                    },
+                    error: function() { 
+                         // console.log(data);
+                    }
+                });
+            
+        });
+
+         // $('.remove').click(function(){
+         //    var id = $(this).data('id');
+         //    alert(id);
+         // })
       })
    </script>
 @endsection 

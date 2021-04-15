@@ -2,7 +2,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-2 col-sm-2">
-                     <div class="logo"><a href="index.html"><img src="public/fontend_lib/images/logo.png" alt="FlatShop"></a></div>
+                     <div class="logo"><a href="index.html"><img src="public/fontend_lib/images/logoabc.png" alt="FlatShop"></a></div>
                   </div>
                   <div class="col-md-10 col-sm-10">
                      <div class="header_top">
@@ -52,13 +52,44 @@
                               <form><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search"></form>
                            </li>
                            <li class="option-cart listcart">
-                              <a href="javascript:" onclick="" class="cart-icon">cart <span class="cart_no">02</span></a>
+                              <a href="javascript:" onclick="" class="cart-icon">cart 
+                               @if(Session::has('Cart') != null)
+                                 <span class="cart_no" id="cart_no">{{Session::get('Cart')->totalQuanty}}</span>
+                                 @else
+                                 <span class="cart_no"></span>
+                                 @endif
+                              </a>
                               <ul class="option-cart-item">
                                  <div id="change-cart">
-                              
+                                    @if(Session::has('Cart') != null)
 
-                                 </div>
-                                 <li><span class="total">Total <strong>$60.00</strong></span><button class="checkout" onClick="">CheckOut</button></li>
+
+                                             @foreach(Session::get('Cart')->products as $item)
+                                                <li>
+                                                     <div class="cart-item">
+                                                        <div class="image"><img src="{{$item['productInfo']->AnhNen}}" alt=""></div>
+                                                        <div class="item-description">
+                                                           <p class="name">{{$item['productInfo']->TenSP}}</p>
+                                                           <p>Size: <span class="light-red">One size</span><br>Số lượng <span class="light-red">{{$item['quanty']}}</span></p>
+                                                        </div>
+                                                        <div class="right">
+                                                           <p class="price">{{$item['productInfo']->Gia}}</p>
+                                                           <a href="javascript:" class="remove" data-id="{{$item['productInfo']->MaSP}}"><img src="public/fontend_lib/images/remove.png" alt="remove"></a>
+                                                        </div>
+                                                     </div>
+                                                  </li>
+
+                                             @endforeach
+                                                 
+                                             <li>
+                                                <span class="total">Tổng Tiền <strong>{{Session::get('Cart')->totalPrice}}</strong></span>
+                                                <input type="hidden" value="{{Session::get('Cart')->totalQuanty}}" id="total-quanty">
+                                             </li>
+
+                                             @endif
+                                                                              
+                                  </div>
+                                 <li><a  href="cartlists"><button class="checkout" onClick="">Xem giỏ hàng</button></a></li>
                               </ul>
                            </li>
                         </ul>

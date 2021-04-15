@@ -1,19 +1,87 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/favicon.png">
-    <title>
-      Welcome to FlatShop
-    </title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100' rel='stylesheet' type='text/css'>
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <base href="{{asset('')}}">
+      <link rel="shortcut icon" href="images/favicon.png">
+      <title>0che Shop</title>
+
+      <link href="public/fontend_lib/css/bootstrap.css" rel="stylesheet">
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,700,500italic,100italic,100' rel='stylesheet' type='text/css'>
+      <link href="public/fontend_lib/css/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen"/>
+      <link href="public/fontend_lib/css/sequence-looptheme.css" rel="stylesheet" media="all"/>
+     
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="public/fontend_lib/fontawesome/css/all.min.css" />
+      <link href="public/fontend_lib/css/test.css" rel="stylesheet">
+
+<!--      <style>
+.shop-table table tr td.qua-col .pro-qty {
+    width: 123px;
+    height: 46px;
+    border: 2px solid #ebebeb;
+    padding: 0 15px;
+    float: left;
+}
+.shop-table table tr td.qua-col .pro-qty .qtybtn {
+    font-size: 24px;
+    color: #b2b2b2;
+    float: left;
+    line-height: 38px;
+    cursor: pointer;
+    width: 18px;
+}
+.shop-table table tr td.qua-col .pro-qty input {
+    text-align: center;
+    width: 52px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    color: #4c4c4c;
+    line-height: 40px;
+    float: left;
+}
+     </style> -->
+
+     <style>
+      .dec {
+        float: left;
+        line-height: 38px;
+        width: 33%;
+    font-size: 100%;
+        color: #f7544a;
+        cursor: pointer;
+
+      }
+      .inc {
+        float: right;
+        line-height: 38px;
+        width: 33%;
+        font-size: 100%;
+        color: #f7544a;
+        cursor: pointer;
+
+      }
+      .pro-qty input {
+        width: 33%;
+        border:none;
+        text-align: center;
+
+      }
+      .pro-qty {
+       border: 2px solid #ebebeb;
+       width: 100%;
+      }
+
+       
+     </style>
+
+      <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script><![endif]-->
+      }
+   </head>
     <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
 </script>
@@ -23,426 +91,20 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="header">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-2 col-sm-2">
-              <div class="logo">
-                <a href="index.html">
-                  <img src="images/logo.png" alt="FlatShop">
-                </a>
-              </div>
-            </div>
-            <div class="col-md-10 col-sm-10">
-              <div class="header_top">
-                <div class="row">
-                  <div class="col-md-3">
-                    <ul class="option_nav">
-                      <li class="dorpdown">
-                        <a href="#">
-                          Eng
-                        </a>
-                        <ul class="subnav">
-                          <li>
-                            <a href="#">
-                              Eng
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              Vns
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              Fer
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              Gem
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="dorpdown">
-                        <a href="#">
-                          USD
-                        </a>
-                        <ul class="subnav">
-                          <li>
-                            <a href="#">
-                              USD
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              UKD
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              FER
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-6">
-                    <ul class="topmenu">
-                      <li>
-                        <a href="#">
-                          About Us
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          News
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          Service
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          Recruiment
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          Media
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          Support
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="col-md-3">
-                    <ul class="usermenu">
-                      <li>
-                        <a href="checkout.html" class="log">
-                          Login
-                        </a>
-                      </li>
-                      <li>
-                        <a href="checkout2.html" class="reg">
-                          Register
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="clearfix">
-              </div>
-              <div class="header_bottom">
-                <ul class="option">
-                  <li id="search" class="search">
-                    <form>
-                      <input class="search-submit" type="submit" value="">
-                      <input class="search-input" placeholder="Enter your search term..." type="text" value="" name="search">
-                    </form>
-                  </li>
-                  <li class="option-cart">
-                    <a href="#" class="cart-icon">
-                      cart 
-                      <span class="cart_no">
-                        02
-                      </span>
-                    </a>
-                    <ul class="option-cart-item">
-                      <li>
-                        <div class="cart-item">
-                          <div class="image">
-                            <img src="images/products/thum/products-01.png" alt="">
-                          </div>
-                          <div class="item-description">
-                            <p class="name">
-                              Lincoln chair
-                            </p>
-                            <p>
-                              Size: 
-                              <span class="light-red">
-                                One size
-                              </span>
-                              <br>
-                              Quantity: 
-                              <span class="light-red">
-                                01
-                              </span>
-                            </p>
-                          </div>
-                          <div class="right">
-                            <p class="price">
-                              $30.00
-                            </p>
-                            <a href="#" class="remove">
-                              <img src="images/remove.png" alt="remove">
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <div class="cart-item">
-                          <div class="image">
-                            <img src="images/products/thum/products-02.png" alt="">
-                          </div>
-                          <div class="item-description">
-                            <p class="name">
-                              Lincoln chair
-                            </p>
-                            <p>
-                              Size: 
-                              <span class="light-red">
-                                One size
-                              </span>
-                              <br>
-                              Quantity: 
-                              <span class="light-red">
-                                01
-                              </span>
-                            </p>
-                          </div>
-                          <div class="right">
-                            <p class="price">
-                              $30.00
-                            </p>
-                            <a href="#" class="remove">
-                              <img src="images/remove.png" alt="remove">
-                            </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <span class="total">
-                          Total 
-                          <strong>
-                            $60.00
-                          </strong>
-                        </span>
-                        <button class="checkout" onClick="location.href='checkout.html'">
-                          CheckOut
-                        </button>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">
-                      Toggle navigation
-                    </span>
-                    <span class="icon-bar">
-                    </span>
-                    <span class="icon-bar">
-                    </span>
-                    <span class="icon-bar">
-                    </span>
-                  </button>
-                </div>
-                <div class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav">
-                    <li class="active dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Home
-                      </a>
-                      <div class="dropdown-menu">
-                        <ul class="mega-menu-links">
-                          <li>
-                            <a href="index.html">
-                              home
-                            </a>
-                          </li>
-                          <li>
-                            <a href="home2.html">
-                              home2
-                            </a>
-                          </li>
-                          <li>
-                            <a href="home3.html">
-                              home3
-                            </a>
-                          </li>
-                          <li>
-                            <a href="productlitst.html">
-                              Productlitst
-                            </a>
-                          </li>
-                          <li>
-                            <a href="productgird.html">
-                              Productgird
-                            </a>
-                          </li>
-                          <li>
-                            <a href="details.html">
-                              Details
-                            </a>
-                          </li>
-                          <li>
-                            <a href="cart.html">
-                              Cart
-                            </a>
-                          </li>
-                          <li>
-                            <a href="checkout.html">
-                              CheckOut
-                            </a>
-                          </li>
-                          <li>
-                            <a href="checkout2.html">
-                              CheckOut2
-                            </a>
-                          </li>
-                          <li>
-                            <a href="contact.html">
-                              contact
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="productgird.html">
-                        men
-                      </a>
-                    </li>
-                    <li>
-                      <a href="productlitst.html">
-                        women
-                      </a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Fashion
-                      </a>
-                      <div class="dropdown-menu mega-menu">
-                        <div class="row">
-                          <div class="col-md-6 col-sm-6">
-                            <ul class="mega-menu-links">
-                              <li>
-                                <a href="productgird.html">
-                                  New Collection
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Shirts & tops
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Laptop & Brie
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Dresses
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Blazers & Jackets
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Shoulder Bags
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="col-md-6 col-sm-6">
-                            <ul class="mega-menu-links">
-                              <li>
-                                <a href="productgird.html">
-                                  New Collection
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Shirts & tops
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Laptop & Brie
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Dresses
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Blazers & Jackets
-                                </a>
-                              </li>
-                              <li>
-                                <a href="productgird.html">
-                                  Shoulder Bags
-                                </a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="productgird.html">
-                        gift
-                      </a>
-                    </li>
-                    <li>
-                      <a href="productgird.html">
-                        kids
-                      </a>
-                    </li>
-                    <li>
-                      <a href="productgird.html">
-                        blog
-                      </a>
-                    </li>
-                    <li>
-                      <a href="productgird.html">
-                        jewelry
-                      </a>
-                    </li>
-                    <li>
-                      <a href="contact.html">
-                        contact us
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="clearfix">
-        </div>
-        <div class="page-index">
-          <div class="container">
-            <p>
-              Home - Shopping Cart
-            </p>
-          </div>
-        </div>
-      </div>
+      @include('layout.header')
       <div class="clearfix">
       </div>
       <div class="container_fullwidth">
         <div class="container shopping-cart">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" id="list-cart">
+                 
+
+
+
+
               <h3 class="title">
-                Shopping Cart
+                Giỏ Hàng
               </h3>
               <div class="clearfix">
               </div>
@@ -450,34 +112,36 @@
                 <thead>
                   <tr>
                     <th>
-                      Image
+                      Hình ảnh
                     </th>
                     <th>
-                      Dtails
+                      Chi tiết
                     </th>
                     <th>
-                      Price
+                      Giá
                     </th>
                     <th>
-                      Quantity
+                      Số lượng
                     </th>
                     <th>
-                      Price
+                      Tổng Giá
                     </th>
                     <th>
-                      Delete
+                      Xóa
                     </th>
                   </tr>
                 </thead>
                 <tbody>
+                   @if(Session::has('Cart') != null)
+                   @foreach(Session::get('Cart')->products as $item)
                   <tr>
                     <td>
-                      <img src="images/products/small/products-06.png" alt="">
+                      <img src="{{$item['productInfo']->AnhNen}}" alt="">
                     </td>
                     <td>
                       <div class="shop-details">
                         <div class="productname">
-                          Lincoln Corner Unit Products
+                          {{$item['productInfo']->TenSP}}
                         </div>
                         <p>
                           <img alt="" src="images/star.png">
@@ -485,7 +149,7 @@
                             02 Review(s)
                           </a>
                         </p>
-                        <div class="color-choser">
+                        <!-- <div class="color-choser">
                           <span class="text">
                             Product Color : 
                           </span>
@@ -501,22 +165,22 @@
                               </a>
                             </li>
                           </ul>
-                        </div>
-                        <p>
+                        </div> -->
+                       <!--  <p>
                           Product Code : 
                           <strong class="pcode">
                             Dress 120
                           </strong>
-                        </p>
+                        </p> -->
                       </div>
                     </td>
                     <td>
                       <h5>
-                        $200.00
+                        {{$item['productInfo']->Gia}}
                       </h5>
                     </td>
                     <td>
-                      <select name="">
+                      <!-- <select name="">
                         <option selected value="1">
                           1
                         </option>
@@ -526,182 +190,36 @@
                         <option value="1">
                           3
                         </option>
-                      </select>
+                      </select> -->
+
+                      <input type="number" style="width: 80%" data-id="{{$item['productInfo']->MaSP}}" data-gia ="{{$item['productInfo']->Gia}}" value="{{$item['quanty']}}" class="input-change">
                     </td>
                     <td>
                       <h5>
-                        <strong class="red">
-                          $200.00
+                        <strong class="red" id="tong{{$item['productInfo']->MaSP}}">
+                          {{$item['price']}}
                         </strong>
                       </h5>
                     </td>
                     <td>
-                      <a href="#">
-                        <img src="images/remove.png" alt="">
+                      <a href="javascript:" class="xoacart" data-id = "{{$item['productInfo']->MaSP}}">
+                        <img src="public/fontend_lib/images/remove.png" alt="">
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <img src="images/products/small/products-02.png" alt="">
-                    </td>
-                    <td>
-                      <div class="shop-details">
-                        <div class="productname">
-                          Lincoln Corner Unit Products
-                        </div>
-                        <p>
-                          <img alt="" src="images/star.png">
-                          <a class="review_num" href="#">
-                            02 Review(s)
-                          </a>
-                        </p>
-                        <div class="color-choser">
-                          <span class="text">
-                            Product Color : 
-                          </span>
-                          <ul>
-                            <li>
-                              <a class="gray-bg" href="#">
-                                pink
-                              </a>
-                            </li>
-                            <li>
-                              <a class="black-bg " href="#">
-                                black
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <p>
-                          Product Code : 
-                          <strong class="pcode">
-                            Dress 132
-                          </strong>
-                        </p>
-                      </div>
-                    </td>
-                    <td>
-                      <h5>
-                        $200.00
-                      </h5>
-                    </td>
-                    <td>
-                      <select name="">
-                        <option selected value="1">
-                          1
-                        </option>
-                        <option value="2">
-                          2
-                        </option>
-                        <option value="3">
-                          3
-                        </option>
-                      </select>
-                    </td>
-                    <td>
-                      <h5>
-                        <strong class="red">
-                          $200.00
-                        </strong>
-                      </h5>
-                    </td>
-                    <td>
-                      <a href="#">
-                        <img src="images/remove.png" alt="">
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img src="images/products/small/products-05.png" alt="">
-                    </td>
-                    <td>
-                      <div class="shop-details">
-                        <div class="productname">
-                          Lincoln Corner Unit Products
-                        </div>
-                        <p>
-                          <img alt="" src="images/star.png">
-                          <a class="review_num" href="#">
-                            02 Review(s)
-                          </a>
-                        </p>
-                        <div class="color-choser">
-                          <span class="text">
-                            Product Color : 
-                          </span>
-                          <ul>
-                            <li>
-                              <a class="red-bg" href="#">
-                                light red
-                              </a>
-                            </li>
-                            <li>
-                              <a class=" yellow-bg" href="#">
-                                yellow"
-                              </a>
-                            </li>
-                            <li>
-                              <a class="black-bg " href="#">
-                                black
-                              </a>
-                            </li>
-                            <li>
-                              <a class="pink-bg" href="#">
-                                pink
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <p>
-                          Product Code : 
-                          <strong class="pcode">
-                            Dress 050
-                          </strong>
-                        </p>
-                      </div>
-                    </td>
-                    <td>
-                      <h5>
-                        $200.00
-                      </h5>
-                    </td>
-                    <td>
-                      <select name="">
-                        <option selected value="1">
-                          1
-                        </option>
-                        <option value="2">
-                          2
-                        </option>
-                        <option value="3">
-                          3
-                        </option>
-                      </select>
-                    </td>
-                    <td>
-                      <h5>
-                        <strong class="red">
-                          $200.00
-                        </strong>
-                      </h5>
-                    </td>
-                    <td>
-                      <a href="#">
-                        <img src="images/remove.png" alt="">
-                      </a>
-                    </td>
-                  </tr>
+                  @endforeach
+                  
+                   @endif
+                  
                 </tbody>
                 <tfoot>
                   <tr>
                     <td colspan="6">
                       <button class="pull-left">
-                        Continue Shopping
+                        Tiếp tục mua sắm
                       </button>
-                      <button class=" pull-right">
-                        Update Shopping Cart
+                      <button class="pull-right thanhtoan">
+                        Cập nhật
                       </button>
                     </td>
                   </tr>
@@ -711,7 +229,7 @@
               </div>
               <div class="row">
                 <div class="col-md-4 col-sm-6">
-                  <div class="shippingbox">
+                  <!-- <div class="shippingbox">
                     <h5>
                       Estimate Shipping And Tax
                     </h5>
@@ -1196,10 +714,10 @@
                         Get A Qoute
                       </button>
                     </form>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-md-4 col-sm-6">
-                  <div class="shippingbox">
+                 <!--  <div class="shippingbox">
                     <h5>
                       Discount Codes
                     </h5>
@@ -1214,259 +732,149 @@
                         Get A Qoute
                       </button>
                     </form>
-                  </div>
+                  </div> -->
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-6" id="tinhtien">
                   <div class="shippingbox">
+                    @if(Session::has('Cart') != null)
                     <div class="subtotal">
-                      <h5>
-                        Sub Total
+                      <h5 style="font-size: 100%">
+                        Tổng Số lượng :
                       </h5>
                       <span>
-                        $1.000.00
+                        {{Session::get('Cart')->totalQuanty}}
                       </span>
                     </div>
+                      
                     <div class="grandtotal">
                       <h5>
-                        GRAND TOTAL 
+                        Tổng tiền
                       </h5>
                       <span>
-                        $1.000.00
+                        {{Session::get('Cart')->totalPrice}}
                       </span>
                     </div>
-                    <button>
-                      Process To Checkout
+                    @endif
+                    <button style="float: right;">
+                      Đặt hàng
                     </button>
                   </div>
                 </div>
               </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <span style="color:red"></span> -->
+
             </div>
           </div>
           <div class="clearfix">
-          </div>
-          <div class="our-brand">
-            <h3 class="title">
-              <strong>
-                Our 
-              </strong>
-              Brands
-            </h3>
-            <div class="control">
-              <a id="prev_brand" class="prev" href="#">
-                &lt;
-              </a>
-              <a id="next_brand" class="next" href="#">
-                &gt;
-              </a>
-            </div>
-            <ul id="braldLogo">
-              <li>
-                <ul class="brand_item">
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/envato.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/themeforest.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/photodune.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/activeden.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/envato.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <ul class="brand_item">
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/envato.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/themeforest.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/photodune.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/activeden.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="brand-logo">
-                        <img src="images/envato.png" alt="">
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
       <div class="clearfix">
       </div>
-      <div class="footer">
-        <div class="footer-info">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-3">
-                <div class="footer-logo">
-                  <a href="#">
-                    <img src="images/logo.png" alt="">
-                  </a>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <h4 class="title">
-                  Contact 
-                  <strong>
-                    Info
-                  </strong>
-                </h4>
-                <p>
-                  No. 08, Nguyen Trai, Hanoi , Vietnam
-                </p>
-                <p>
-                  Call Us : (084) 1900 1008
-                </p>
-                <p>
-                  Email : michael@leebros.us
-                </p>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <h4 class="title">
-                  Customer
-                  <strong>
-                    Support
-                  </strong>
-                </h4>
-                <ul class="support">
-                  <li>
-                    <a href="#">
-                      FAQ
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      Payment Option
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      Booking Tips
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      Infomation
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-3">
-                <h4 class="title">
-                  Get Our 
-                  <strong>
-                    Newsletter 
-                  </strong>
-                </h4>
-                <p>
-                  Lorem ipsum dolor ipsum dolor.
-                </p>
-                <form class="newsletter">
-                  <input type="text" name="" placeholder="Type your email....">
-                  <input type="submit" value="SignUp" class="button">
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="copyright-info">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <p>
-                  Copyright © 2012. Designed by 
-                  <a href="#">
-                    Michael Lee
-                  </a>
-                  . All rights reseved
-                </p>
-              </div>
-              <div class="col-md-6">
-                <ul class="social-icon">
-                  <li>
-                    <a href="#" class="linkedin">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="google-plus">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="twitter">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="facebook">
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     @include ('layout.footer')
     </div>
     <!-- Bootstrap core JavaScript==================================================-->
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js">
-    </script>
-    <script type="text/javascript" src="js/bootstrap.min.js">
-    </script>
-    <script defer src="js/jquery.flexslider.js">
-    </script>
-    <script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js">
-    </script>
-    <script type="text/javascript" src="js/script.min.js" >
+    <script type="text/javascript" src="public/fontend_lib/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="public/fontend_lib/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="public/fontend_lib/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/fontend_lib/js/jquery.sequence-min.js"></script>
+    <script type="text/javascript" src="public/fontend_lib/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+    <script defer src="public/fontend_lib/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="public/fontend_lib/js/script.min.js" ></script>
+    <script>
+      $(document).ready(function(){
+           $('.option-cart').hide();
+           //  id="list-cart"
+           $('.xoacart').click(function(){
+              var MaSP = $(this).data("id");
+              alert(MaSP);
+              var url = 'deletecartitem-list/'+ MaSP;
+
+              
+                    $.ajax({
+                    type: 'GET', //THIS NEEDS TO BE GET
+                    url: url,
+
+                    success: function (response) {
+                       // console.log(response);
+                       // $('#list-cart').empty();
+                       // $('#list-cart').html(response);
+                       location.reload();
+                       // var quanty = $('#total-quanty').val();
+                      
+                       // $('#cart_no').text($('#total-quanty').val());
+                       
+                    },
+                    error: function() { 
+                         // console.log(data);
+                    }
+                });
+           });
+
+           $('.input-change').change(function(){
+              var sl = $(this).val();
+              var gia = $(this).data('gia');
+
+              var tong = sl*gia;
+              var id = $(this).data('id');
+               // alert(id);
+
+               // var aa = ;
+               // alert(aa);
+              $("#tong"+id).text(tong);
+              $('#tinhtien div .subtotal').hide();
+              // $('#tinhtien div .grandtotal span').text('Cập nhật để xem giá');
+              $('#tinhtien div').html('<div style="height:108px"><span  style="color:red;">Cập nhật để xem giá và số lượng</span></div>');
+              
+
+           });
+
+           $('.thanhtoan').click(function(){
+                var list = [];
+                $('.input-change').each(function(){
+                  var element = {key:$(this).data('id'),value:$(this).val()}
+                  list.push(element);
+                });
+
+                console.log(list);
+              var url = 'updateCart'
+                $.ajax({
+                    type: 'post', //THIS NEEDS TO BE GET
+                    url: url,
+                    data: {
+                              _token: "{{ csrf_token() }}",
+                               data: list,
+                                          
+                                        },
+
+                    success: function (response) {
+                       console.log(response);
+                       // $('#list-cart').empty();
+                       // $('#list-cart').html(response);
+                       location.reload();
+
+                       
+                       
+                    },
+                    error: function() { 
+                         // console.log(data);
+                    }
+                });
+
+           });
+      });
     </script>
   </body>
 </html>

@@ -102,4 +102,16 @@ Route::resource('/phongcach','PhongCachController');
 Route::get('/chitietsanpham/{MaSP}','ChiTietSPController@show');
 Route::get('/danhmuc/{MaDM}','SPTheoDanhMucController@show');
 Route::get('/AddCart/{MaSP}', 'CartController@AddCart');
+Route::get('/deletecartitem/{MaSP}', 'CartController@DeleteItem');
+Route::get('/cartlists', 'CartController@cartList');
+
+Route::get('/deletecartitem-list/{MaSP}', 'CartController@DeleteListItem');
+Route::post('/updateCart', 'CartController@updateCart');
 // Route::post('/AddCart/{MaSP}', 'CartController@postAddCart');
+
+
+Route::get('/login','CusLoginController@getLogin');
+Route::post('/login','CusLoginController@postLogin');
+Route::get('/logout','CusLoginController@logout');
+Route::get('/sigup','CusLoginController@getSigup');
+Route::post('/sigup','CusLoginController@postSigup');

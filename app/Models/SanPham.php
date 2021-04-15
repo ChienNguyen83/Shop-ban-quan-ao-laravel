@@ -157,6 +157,40 @@ class SanPham extends Model
       }
      
     }
+
+
+
+
+        protected function getGiaSPbyMa1($MaSP) {
+      $sp = DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->get();
+      $arr = array();
+      foreach ($sp as $value) {
+         array_push($arr,$value->DonGia);
+      }
+      
+
+
+          $min = null;
+          $position = null;
+ 
+        for ($i = 0; $i < count($arr); $i++)
+        {
+            if ($min == null){
+                $min = $arr[$i];
+              
+            }
+            else {
+                if ($arr[$i] < $min){
+                    $min = $arr[$i];
+                  
+                }
+            }
+        }
+
+        return $gia = $min;
+   
+     
+    }
     protected function XoaSP($MaSP){
       DB::table('ChiTietSanPham')->where('MaSP',$MaSP)->delete();
       $xoa = DB::table('SanPham')->where('MaSP',$MaSP)->delete();
