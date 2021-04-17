@@ -17,8 +17,8 @@ class TaoKhoaPhuChoCacBang extends Migration
             $table->foreign('MaHD')->references('MaHD')->on('HoaDon');
         });
         Schema::table('HoaDon', function (Blueprint $table) {
-            $table->foreign('MaKH')->references('MaKH')->on('KhachHang');
-            $table->foreign('MaNV')->references('MaNV')->on('NhanVien');
+            // $table->foreign('MaKH')->references('MaKH')->on('KhachHang');
+            // $table->foreign('MaNV')->references('MaNV')->on('NhanVien');
             
         });
         

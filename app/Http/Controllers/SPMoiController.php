@@ -1,10 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\DanhMuc;
+use App\Models\SanPham;
+use App\Models\ThuongHieu;
+use App\Models\ChiTietSanPham;
+use App\Models\Mau;
 use Illuminate\Http\Request;
+   use Illuminate\Support\Facades\DB;
 
-class DoNamController extends Controller
+
+class SPMoiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,8 +18,16 @@ class DoNamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view ('donam');
+    {   
+           $sp = DB::table('SanPham')->simplePaginate(15);
+        foreach ($sp as $value) {
+            $value->Gia = SanPham::getGiaSPbyMa($value->MaSP);
+        }
+        // $sp1 = $sp->simplePaginate(9);
+        // dd($sp1);
+        
+        return view('sanphammoi',['sp'=>$sp]);
+        
     }
 
     /**

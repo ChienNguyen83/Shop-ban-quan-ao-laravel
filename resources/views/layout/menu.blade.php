@@ -4,7 +4,7 @@
                 </h3>
                 <ul id="danhmuc">
                   <!--                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       Men
                     </a>
                   </li> -->
@@ -49,62 +49,62 @@
                 </h3>
                 <ul>
                   <li>
-                    <a href="#" class="red-bg">
+                    <a href="javascript:" class="red-bg">
                       light red
                     </a>
                   </li>
                   <li>
-                    <a href="#" class=" yellow-bg">
+                    <a href="javascript:" class=" yellow-bg">
                       yellow"
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="black-bg ">
+                    <a href="javascript:" class="black-bg ">
                       black
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="pink-bg">
+                    <a href="javascript:" class="pink-bg">
                       pink
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="dkpink-bg">
+                    <a href="javascript:" class="dkpink-bg">
                       dkpink
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="chocolate-bg">
+                    <a href="javascript:" class="chocolate-bg">
                       chocolate
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="orange-bg">
+                    <a href="javascript:" class="orange-bg">
                       orange-bg
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="off-white-bg">
+                    <a href="javascript:" class="off-white-bg">
                       off-white
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="extra-lightgreen-bg">
+                    <a href="javascript:" class="extra-lightgreen-bg">
                       extra-lightgreen
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="lightgreen-bg">
+                    <a href="javascript:" class="lightgreen-bg">
                       lightgreen
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="biscuit-bg">
+                    <a href="javascript:" class="biscuit-bg">
                       biscuit
                     </a>
                   </li>
                   <li>
-                    <a href="#" class="chocolatelight-bg">
+                    <a href="javascript:" class="chocolatelight-bg">
                       chocolatelight
                     </a>
                   </li>
@@ -121,42 +121,42 @@
                 </h3>
                 <ul>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       Lincoln us
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       SDress for Girl
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       Corner
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       Window
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       PG
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       Oscar
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       Bath room
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                       PSD
                     </a>
                   </li>
@@ -183,51 +183,51 @@
                   Facebook
                 </h3>
                 <span class="likebutton">
-                  <a href="#">
-                    <img src="images/fblike.png" alt="">
+                  <a href="javascript:">
+                    <img src="public/fontend_lib/images/fblike.png" alt="">
                   </a>
                 </span>
                 <p>
-                  12k people like Flat Shop.
+                  12k people like 0che Shop.
                 </p>
                 <ul>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="javascript:">
                     </a>
                   </li>
                 </ul>
                 <div class="fbplug">
-                  <a href="#">
+                  <a href="javascript:">
                     <span>
-                      <img src="images/fbicon.png" alt="">
+                      <img src="public/fontend_lib/images/fbicon.png" alt="">
                     </span>
                     Facebook social plugin
                   </a>
@@ -236,7 +236,7 @@
               <div class="clearfix">
               </div>
               <div class="leftbanner">
-                <img src="images/banner-small-01.png" alt="">
+                <img src="public/fontend_lib/images/banner-small-01.png" alt="">
               </div>
 
 
@@ -244,13 +244,24 @@
                    <script type="text/javascript">
 
       $(document).ready(function(){
+         
 
-          $.get('ajax/danhmuc', function(data){
+
+
+   $.get('ajax/danhmuc', function(data){
                     $('#danhmuc').html(data);
           });
           $.get('ajax/thuonghieu', function(data){
                     $('#thuonghieu').html(data);
           });
+
+
+
+
+
+
+        
+       
 
 
 

@@ -84,6 +84,13 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
 		
 	});
+		Route::group(['prefix'=>'donhang'], function(){
+		Route::get('danhsach','DonHangController@getDanhSach');
+		Route::get('sua/{MaDM}','DonHangController@getSua');
+		Route::post('sua/{MaDM}','DonHangController@postSua');
+		Route::post('xoa/{MaDM}','DanhMucController@postXoa');
+		
+	});
 	// Route::group(['prefix'=>'nhanvien'], function(){
 	// 	Route::get('danhsach','TheLoaiController@getDanhSach');
 	// 	Route::get('sua','TheLoaiController@getSua');
@@ -96,7 +103,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 	// });
 });
 Route::resource('/trangchu','TrangChuController');
-Route::resource('/donam','DoNamController');
+Route::resource('/sanphammoi','SPMoiController');
 Route::resource('/donu','DoNuController');
 Route::resource('/phongcach','PhongCachController');
 Route::get('/chitietsanpham/{MaSP}','ChiTietSPController@show');
@@ -104,6 +111,7 @@ Route::get('/danhmuc/{MaDM}','SPTheoDanhMucController@show');
 Route::get('/AddCart/{MaSP}', 'CartController@AddCart');
 Route::get('/deletecartitem/{MaSP}', 'CartController@DeleteItem');
 Route::get('/cartlists', 'CartController@cartList');
+Route::get('/lienhe', 'LienHeController@getLH');
 
 Route::get('/deletecartitem-list/{MaSP}', 'CartController@DeleteListItem');
 Route::post('/updateCart', 'CartController@updateCart');
@@ -115,3 +123,5 @@ Route::post('/login','CusLoginController@postLogin');
 Route::get('/logout','CusLoginController@logout');
 Route::get('/sigup','CusLoginController@getSigup');
 Route::post('/sigup','CusLoginController@postSigup');
+Route::get('/checkout','CheckoutController@getcheckout')->middleware('CusLogin');
+Route::post('/checkout','CheckoutController@postcheckout')->middleware('CusLogin');

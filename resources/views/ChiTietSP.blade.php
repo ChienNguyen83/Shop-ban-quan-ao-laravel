@@ -125,16 +125,16 @@
 
                     Gía : 
                     <span class="new_price">
-                      {{$Gia}}
-                      <sup>
-                        vnđ
-                      </sup>
+                      
+                      <?php $gia = intval(($Gia)); echo number_format($gia).'<sup>
+                        đ
+                      </sup>'; ?>
                     </span>
                     <span class="old_price">
-                      450.00
+                      <!-- 450.00
                       <sup>
                         $
-                      </sup>
+                      </sup> -->
                     </span>
                   </div>
                   <hr class="border">
@@ -179,12 +179,10 @@
                    <hr class="border">
                    <br>
                     <div class="button_group">
-                      <button class="button" >
-                        Mua Ngay
-                      </button>
-                      <button class="button favorite">
-                        <i class="fas fa-cart-plus"></i>
-                      </button>
+                     <a href="checkout"> <button class="button" >
+                        Mua Hàng</button></a>
+                      
+                    <a href="javascript:" class="button favorite addCart" data-id ="{{$sp->MaSP}}" type="button"><i class="fas fa-cart-plus"></i></a>
                       <button class="button favorite">
                         <i class="far fa-heart"></i>
                       
@@ -448,16 +446,16 @@
                             {{$cl->TenSP}}
                           </div>
                           <h4 class="price">
-                            {{$cl->Gia}}
+                           
+                            <?php $gia = intval(($cl->Gia)); echo number_format($gia).'<sup>
+                        đ
+                      </sup>'; ?>
                           </h4>
                           <div class="button_group">
                             <a href="chitietsanpham/{{$cl->MaSP}}" class="button add-cart" type="button">
                               Xem Chi Tiết
                             </a>
-                            <button class="button compare" type="button">
-                              <i class="fas fa-cart-plus">
-                              </i>
-                            </button>
+                     <a href="javascript:" class="button compare addCart" data-id ="{{$sp->MaSP}}" type="button"><i class="fas fa-cart-plus"></i></a>
                             <button class="button wishlist" type="button">
                               <i class="far fa-heart">
                               </i>
@@ -481,7 +479,7 @@
 
 
             @endforeach
-            <div class="col-md-3">
+          <!--   <div class="col-md-3">
               <div class="special-deal leftbar">
                 <h4 class="title">
                   Special 
@@ -663,6 +661,15 @@
               </div>
               <div class="clearfix">
               </div>
+            </div> -->
+
+            <div class="col-md-3">
+              <br>
+              <br>
+              <img src="public/fontend_lib/images/slide5.png" style="width: 100%" alt="">
+              <br>
+              <br>
+              <img src="public/fontend_lib/images/slide7.png" style="width: 100%" alt="">
             </div>
           </div>
           <div class="clearfix">
@@ -753,6 +760,58 @@
                           }
                       });
              })
+
+
+
+                      $('.addCart').click(function(){
+               var MaSP = $(this).data('id');
+               alert("Thêm thành công");
+
+                var url = 'AddCart/'+ MaSP;
+                // alert(url);
+
+                $.ajax({
+                    type: 'GET', //THIS NEEDS TO BE GET
+                    url: url,
+
+                    success: function (response) {
+                       console.log(response);
+                       $('#change-cart').empty();
+                       $('#change-cart').html(response);
+                       $('#cart_no').text($('#total-quanty').val());
+                    
+                       
+                    },
+                    error: function() { 
+                         // console.log(data);
+                    }
+                });
+            
+         });
+        // click vào 1 elemen sau khi load ajax
+        $('#change-cart').on('click','.remove',function(){
+            var id = $(this).data('id');
+             var url = 'deletecartitem/'+ id;
+            // alert(id);
+            $.ajax({
+                    type: 'GET', //THIS NEEDS TO BE GET
+                    url: url,
+
+                    success: function (response) {
+                       console.log(response);
+                       $('#change-cart').empty();
+                       $('#change-cart').html(response);
+                       // var quanty = $('#total-quanty').val();
+                      
+                       $('#cart_no').text($('#total-quanty').val());
+                       
+                    },
+                    error: function() { 
+                         // console.log(data);
+                    }
+                });
+            
+        });
         
          });
        

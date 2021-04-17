@@ -15,6 +15,8 @@ class SanPhamController extends Controller
 {
      public function getDanhSach() {
     	$SanPham = SanPham::all();
+        // $sanpham = $SanPham->paginate(10);
+        // dd($sanpham);
     	// print_r($DanhMuc);
     	return view('admin.sanpham.danhsach',['SanPham'=>$SanPham]);
    //  	echo '<pre>';

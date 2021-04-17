@@ -57,6 +57,7 @@
 	  <script defer src="public/fontend_lib/js/jquery.flexslider.js"></script>
 	  <script type="text/javascript" src="public/fontend_lib/js/script.min.js" ></script>
 @yield('script')
+@yield('script1')
      <script type="text/javascript">
       $(document).ready(function(){
                 // $('.cart-icon').click(function(e){

@@ -53,11 +53,13 @@ class SPTheoDanhMucController extends Controller
     public function show($MaDM)
     {
 
-         $madm = $MaDM;
-        $sp = DB::table('SanPham')->where('MaDM',$madm)->paginate(9);
+        $madm = $MaDM;
+        $sp = DB::table('SanPham')->where('MaDM',$madm)->get();
         foreach ($sp as $value) {
             $value->Gia = SanPham::getGiaSPbyMa($value->MaSP);
         }
+        // $sp1 = $sp->simplePaginate(9);
+        // dd($sp1);
         
         return view('SPTheoDanhMuc',['sp'=>$sp]);
     }

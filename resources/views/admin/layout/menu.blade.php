@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="height: 100%">
       <br>
       <!-- Sidebar - Brand -->
       <!-- <div class="text-center d-none d-md-inline">
@@ -29,13 +29,13 @@
         //  $dem=mysqli_num_rows($rs);
       ?> 
       <li class="nav-item">
-        <a class="nav-link" href="?action=xldathang">
+        <a class="nav-link" href="admin/donhang/danhsach">
           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-          <span>Đơn Đặt Hàng <sup style="border-radius: 10px;" class="badge-danger "> &#160; 
+          <span>Đơn Đặt Hàng <sup style="border-radius: 10px;" class="badge-danger "> <!-- &#160;  -->
             <?php 
           // echo $dem 
           ?> 
-        &#160;</sup></span></a>
+        <!-- &#160;</sup></span></a> -->
       </li>
       <!-- Nav Item - Charts -->
        <?php
@@ -43,7 +43,7 @@
         // $rs=mysqli_query($conn,$sql); 
         // $dem=mysqli_num_rows($rs);
       ?> 
-      <li class="nav-item">
+     <!--  <li class="nav-item">
         <a class="nav-link" href="?action=giaohang">
           <i class="mdi mdi-car"></i>
           <span>Giao Hàng <sup style="border-radius: 10px;" class="badge-danger "> &#160;
@@ -53,23 +53,23 @@
              &#160;</sup></span></a>
           
 
-      </li>
+      </li> -->
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+   <!--    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="mdi mdi-dns"></i>
           <span>Kho Hàng</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+            <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="?action=kho&view=xemdh">Xem đơn hàng</a>
             <a class="collapse-item" href="?action=kho&view=nhapkho">Xuất / Nhập kho</a>
             <a class="collapse-item" href="?action=kho&view=nhatky">Nhật ký Nhập Kho</a>
             <a class="collapse-item" href="?action=kho&view=nhatkyx">Nhật ký Xuất Kho</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <!-- <li class="nav-item">
@@ -140,7 +140,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages1">
+        <a class="nav-link collapsed" href="javascript:" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages1">
          <i class="fas fa-fw fa-table"></i>
           <span>Sản Phẩm</span>
         </a>
@@ -155,17 +155,17 @@
       </li>
       
       <li class="nav-item">
-        <a class="nav-link" href="?action=khuyenmai">
+        <a class="nav-link" href="javascript:">
           <i class="fas fa-atom"></i>
           <span>Khuyến Mãi</span></a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="?action=danhthu">
+        <a class="nav-link" href="javascript:">
           <i class="fas fa-atom"></i>
           <span>Doanh Thu</span></a>
       </li> 
       <li class="nav-item">
-        <a class="nav-link" href="?action=nhanvien">
+        <a class="nav-link" href="javascript:">
           <i class="fas fa-atom"></i>
           <span>Quản lý nhân viên</span></a>
       </li> 

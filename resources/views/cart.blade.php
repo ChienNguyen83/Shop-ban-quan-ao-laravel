@@ -755,9 +755,9 @@
                       </span>
                     </div>
                     @endif
-                    <button style="float: right;">
+                    <a href="checkout"><button style="float: right;">
                       Đặt hàng
-                    </button>
+                    </button></a>
                   </div>
                 </div>
               </div>

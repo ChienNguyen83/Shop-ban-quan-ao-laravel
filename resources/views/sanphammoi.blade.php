@@ -95,13 +95,13 @@
                         {{$sp->TenSP}}
                       </div>
                       <h4 class="price">
-                       <?php $gia = intval(($sp->Gia)); echo number_format($gia).'<sup>
+                        <?php $gia = intval(($sp->Gia)); echo number_format($gia).'<sup>
                         đ
                       </sup>'; ?>
                       </h4>
                       <div class="button_group">
-                         <a href="chitietsanpham/{{$sp->MaSP}}"><button class="button add-cart" type="button">Xem Chi Tiết</button></a>
-                                    <a href="javascript:" class="button compare addCart" data-id ="{{$sp->MaSP}}" type="button"><i class="fas fa-cart-plus"></i></a>
+                        <a href="chitietsanpham/{{$sp->MaSP}}"><button class="button add-cart" type="button">Xem Chi Tiết</button></a>
+                        <a href="javascript:" class="button compare addCart" data-id ="{{$sp->MaSP}}" type="button"><i class="fas fa-cart-plus"></i></a>
                         <button class="button wishlist" type="button">
                           <i class="far fa-heart">
                           </i>
@@ -183,7 +183,6 @@
                 </div>
               </div>
 @endsection
-
 @section ('script1')
 
 

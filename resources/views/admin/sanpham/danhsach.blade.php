@@ -15,9 +15,9 @@
 	<table class="table table-hover m-auto text-center" style="font-size: 13px;">
 		<thead class="badge-info">
 			<tr>
-				<th rowspan="2">STT</th><th rowspan="2">Ảnh Nền</th> <th rowspan="2">Tên Sản Phẩm</th><th rowspan="2">Danh Mục</th><th rowspan="2">Thương hiệu</th><th></th><th colspan ="2" rowspan="2" class="badge-danger"></th>
+				<th rowspan="2">STT</th><th rowspan="2">Ảnh Nền</th> <th rowspan="2">Tên Sản Phẩm</th><th rowspan="2">Danh Mục</th><th rowspan="2">Thương hiệu</th><th>Size</th><th colspan ="2" rowspan="2" class="badge-danger"></th>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<th><u class="navbar">
 					<li>Màu</li>
 					<li>Size</li>
@@ -25,7 +25,7 @@
 					<li>Giá</li>
 				</ul></th>
 				
-			</tr>
+			</tr> -->
 		</thead>
 		<tbody>
 
@@ -42,7 +42,7 @@
 				
 				<td>
 					
-					   <table class="table table-hover m-auto text-center">
+					   <!-- <table class="table table-hover m-auto text-center"> -->
 					  <!--  	<tr>
 					   		<th>Màu</th>
 					   		<th>Size</th>
@@ -50,14 +50,14 @@
 					   		<th>Giá</th>
 					   	</tr> -->
 					   	@foreach ($SanPham->CTSP as $value)
-					   	<tr>
-					   		<td>{{$value->MaMau}}</td>
-					   		<td>{{$value->MaSize}}</td>
-					   		<td>{{$value->SoLuong}}</td>
+					   	<!-- <tr>
+					   		<td>{{$value->MaMau}}</td> -->
+					   		{{$value->MaSize}},
+					   		<!-- <td>{{$value->SoLuong}}</td>
 					   		<td>{{$value->DonGia}}</td>
-					   	</tr>
+					   	</tr> -->
 					   	@endforeach
-					   </table>
+					   <!-- </table> -->
                        
                        
                        

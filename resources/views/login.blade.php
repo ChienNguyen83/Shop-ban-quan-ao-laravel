@@ -88,11 +88,12 @@ span.psw {
       <input type="checkbox" checked="checked" name="remember"> Nhớ tôi
     </label>
 
-  <p style="color: red"><?php 
+  <p style="color: red">
+    <?php 
        $error = Session::get('errorcus');
               if ($error) {
                 echo $error;
-                Session::put('error',null);
+                Session::put('errorcus',null);
               }
 
       ?>

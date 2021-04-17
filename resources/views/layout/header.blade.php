@@ -2,7 +2,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-md-2 col-sm-2">
-                     <div class="logo"><a href="index.html"><img src="public/fontend_lib/images/logoabc.png" alt="FlatShop"></a></div>
+                     <div class="logo"><a href="trangchu"><img src="public/fontend_lib/images/logoabc.png" alt="FlatShop"></a></div>
                   </div>
                   <div class="col-md-10 col-sm-10">
                      <div class="header_top">
@@ -39,8 +39,13 @@
                            </div>
                            <div class="col-md-3">
                               <ul class="usermenu">
-                                 <li><a href="checkout.html" class="log">Đăng Ký</a></li>
-                                 <li><a href="checkout2.html" class="reg">Đăng Nhập</a></li>
+                                 @if(Session::has('Cus_name') == null)
+                                 <li><a href="sigup" class="log">Đăng Ký</a></li>
+                                 <li><a href="login" class="reg">Đăng Nhập</a></li>
+                                 @else
+                                   <li><a href="javascript:" class="log">{{Session::get('Cus_name')}}</a></li>
+                                 <li><a href="logout" class="reg">Đăng xuất</a></li>
+                                 @endif
                               </ul>
                            </div>
                         </div>
@@ -89,7 +94,13 @@
                                              @endif
                                                                               
                                   </div>
-                                 <li><a  href="cartlists"><button class="checkout" onClick="">Xem giỏ hàng</button></a></li>
+                                 <li>
+                                    <a  href="cartlists"><button class="checkout" style="float: left;" onClick="">Giỏ hàng</button></a>
+                                    <a  href="checkout"><button class="checkout" style="float: right;" onClick="">Thanh Toán</button></a>
+
+
+                                 </li>
+                                 <li></li>
                               </ul>
                            </li>
                         </ul>
@@ -112,37 +123,37 @@
                                     </ul>
                                  </div> -->
                               </li>
-                              <li><a href="productgird.html">Bán Chạy</a></li>
-                              <li><a href="productlitst.html">Sản phẩm mới</a></li>
+                              <li><a href="sanphammoi">Bán Chạy</a></li>
+                              <li><a href="sanphammoi">Sản phẩm mới</a></li>
                               <li class="dropdown">
                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Phong Cách</a>
                                  <div class="dropdown-menu mega-menu">
                                     <div class="row">
                                        <div class="col-md-6 col-sm-6">
                                           <ul class="mega-menu-links"> 
-                                             <li><a href="productgird.html">Cổ Điển (CLASSIC)</a></li>
-                                             <li><a href="productgird.html">Tối Giản</a></li>
-                                             <li><a href="productgird.html">Tự Do (HIPPIE)</a></li>
-                                             <li><a href="productgird.html">Bohemian (BOHO)</a></li>
-                                             <li><a href="productgird.html">Thể Thao (SPORTY)</a></li>
-                                             <li><a href="productgird.html">PREPPY</a></li>
+                                             <li><a href="javascript:">Cổ Điển (CLASSIC)</a></li>
+                                             <li><a href="javascript:">Tối Giản</a></li>
+                                             <li><a href="javascript:">Tự Do (HIPPIE)</a></li>
+                                             <li><a href="javascript:">Bohemian (BOHO)</a></li>
+                                             <li><a href="javascript:">Thể Thao (SPORTY)</a></li>
+                                             <li><a href="javascript:">PREPPY</a></li>
                                           </ul>
                                        </div>
                                        <div class="col-md-6 col-sm-6">
                                           <ul class="mega-menu-links">
-                                             <li><a href="productgird.html">New</a></li>
-                                             <li><a href="productgird.html">Shirts & tops</a></li>
+                                             <li><a href="javascript:">New</a></li>
+                                             <li><a href="javascript:">Shirts & tops</a></li>
                                              <!-- <li><a href="productgird.html">Laptop & Brie</a></li> -->
-                                             <li><a href="productgird.html">Dresses</a></li>
-                                             <li><a href="productgird.html">Blazers & Jackets</a></li>
-                                             <li><a href="productgird.html">Shoulder Bags</a></li>
+                                             <li><a href="javascript:">Dresses</a></li>
+                                             <li><a href="javascript:">Blazers & Jackets</a></li>
+                                             <li><a href="javascript:">Shoulder Bags</a></li>
                                           </ul>
                                        </div>
                                     </div>
                                  </div>
                               </li>
-                              <li><a href="productgird.html">Khuyến Mãi</a></li>
-                              <li><a href="contact.html">Liên Hệ</a></li>
+                              <li><a href="javascript:">Khuyến Mãi</a></li>
+                              <li><a href="lienhe">Liên Hệ</a></li>
                            </ul>
                         </div>
                      </div>

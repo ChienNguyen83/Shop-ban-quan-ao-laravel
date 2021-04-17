@@ -15,6 +15,7 @@ class CusLoginController extends Controller
         public function getLogin(){
     	if (Session::has('Cus_name')) {
     		return redirect('trangchu');
+    		 // return $next($request);
     	} else {
     		// return redirect('trangchu');
     		// return view('login');
@@ -31,9 +32,10 @@ class CusLoginController extends Controller
     	if (Auth::attempt(['name'=>$username,'password'=>$password])) {
     		Session::put('Cus_name',$username);
     		return redirect('trangchu');
+    		 // return $next($request);
     	} else {
     		Session::put('errorcus','Tài khoản hoặc mật khẩu chưa đúng');
-    		return redirect('/login');
+    		return view('login');
     		
     		
     	}
@@ -50,25 +52,55 @@ class CusLoginController extends Controller
     }
       public function postSigup(Request $request){
       	$username = $request->user_name;
-      	$email = $request->email;
+      	$re_email = $request->email;
       	$pass = bcrypt($request->cus_pass);
       	//luu user vao csdl
-      	$user = new User;
-      	$user->name = $username;
-      	$user->email = $email;
-      	$user->password = $pass;
-      	$user->save();
+      	$name = DB::table('Users')->select('name')->get();
+      	$email = DB::table('Users')->select('email')->get();
+      	
+      	$allName = array();
+      	$allEmail = array();
+      	foreach ($name as $value) {
+      		array_push($allName, $value->name);
+      	}
+      	foreach ($email as $value) {
+      		array_push($allEmail, $value->email);
+      	}
+      	$b = in_array($username, $allName);
+      	$a = in_array($re_email, $allEmail);
+
+
+
+
+      	
+
        // dang nhap
 
-      		if (Auth::attempt(['name'=>$username,'password'=>$pass])) {
-    		Session::put('Cus_name',$username);
-    		return redirect('trangchu');
-    	} else {
-    		Session::put('errorcus','Tài khoản hoặc mật khẩu chưa đúng');
-    		return redirect('/login');
-    		
-    		
-    	}
+      
+    		if ($a || $b) {
+    			Session::put('errorcus','Tên tài khoản hoặc email đã tồn tại');
+    			return redirect('/sigup');
+    		}else {
+				$user = new User;
+		  		$user->name = $username;
+		  		$user->email = $email;
+		  		$user->password = $pass;
+		  		$user->save();
+		  		Session::put('Cus_name',$username);
+				return redirect('trangchu');
+				 // return $next($request);
+			
+    		}
+
+
+
+
+
+
+
+				    	
+				    
+    	
 
      //  	echo($username);
      //  	echo($email);

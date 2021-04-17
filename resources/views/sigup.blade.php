@@ -119,7 +119,17 @@ button:hover {
     <label>
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
     </label>
-    
+     
+      <p style="color: red"><?php 
+       $error = Session::get('errorcus');
+              if ($error) {
+                echo $error;
+                Session::put('errorcus',null);
+              }
+
+      ?>
+      </p>
+
     <p>Nếu đã có tài khoản <a href="login" style="color:dodgerblue">Về trang Đăng Nhập</a>.</p>
 
     <div class="clearfix">
@@ -141,7 +151,7 @@ button:hover {
                var nhaplaipass = $('#nhaplaipass').val();
          	if (pass != nhaplaipass ) {
          		alert("Mật khẩu nhập lại chưa đúng!");
-         		e.prevetDefault();
+         		e.preventDefault();
          	}
          });
 
